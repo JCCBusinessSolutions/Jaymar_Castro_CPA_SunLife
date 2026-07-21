@@ -288,11 +288,11 @@
   .lead-form.active{display:block;}
   .lead-form label{display:block; font-size:11.5px; font-weight:700; color:var(--navy-deep); text-transform:uppercase; letter-spacing:.03em; margin-bottom:5px; margin-top:14px;}
   .lead-form label:first-child{margin-top:0;}
-  .lead-form input, .lead-form select{
+  .lead-form input, .lead-form select, .lead-form textarea{
     width:100%; padding:11px 12px; border:1px solid var(--line); border-radius:6px; font-family:inherit;
-    font-size:13.5px; background:#fff; color:var(--ink);
+    font-size:13.5px; background:#fff; color:var(--ink); resize:vertical;
   }
-  .lead-form input:focus, .lead-form select:focus{outline:none; border-color:var(--gold);}
+  .lead-form input:focus, .lead-form select:focus, .lead-form textarea:focus{outline:none; border-color:var(--gold);}
   .lead-submit-btn{
     margin-top:20px; width:100%; padding:13px 20px; border-radius:6px; border:none; cursor:pointer;
     background:linear-gradient(135deg,var(--gold-light) 0%, var(--gold) 55%, var(--gold-deep) 100%);
@@ -305,6 +305,11 @@
   .lead-success.active{display:block;}
   .lead-success .checkmark{width:52px; height:52px; border-radius:50%; background:var(--gold); color:var(--navy-deep);
     display:flex; align-items:center; justify-content:center; margin:0 auto 14px; font-size:24px;}
+  .star-picker{display:flex; gap:6px; margin-bottom:16px;}
+  .star-pick{font-size:28px; line-height:1; color:var(--line); cursor:pointer; transition:color .15s ease, transform .15s ease;}
+  .star-pick:hover{transform:scale(1.12);}
+  .star-pick.filled{color:var(--gold);}
+  #testiGrid{transition:opacity .4s ease;}
   @media (max-width:640px){
     .modal-card{flex-direction:column; max-height:92vh; overflow-y:auto;}
     .modal-photo{flex:none; aspect-ratio:3/4; max-height:44vh;}
@@ -330,6 +335,79 @@
   .sun-deco{position:absolute; right:-70px; top:50%; transform:translateY(-50%); width:260px; height:260px; opacity:.5;}
 
   /* ===== TESTIMONIALS ===== */
+  /* ===== APPLY AS A FINANCIAL ADVISOR CTA ===== */
+  section.apply-cta-section{
+    background:var(--navy-deep); color:var(--white); padding:70px 0; position:relative; overflow:hidden;
+  }
+  section.apply-cta-section::before{
+    content:""; position:absolute; inset:0; opacity:.05; pointer-events:none;
+    background-image:repeating-linear-gradient(0deg, #fff 0 1px, transparent 1px 64px);
+  }
+  .apply-cta-inner{display:flex; align-items:center; justify-content:space-between; gap:34px; flex-wrap:wrap; position:relative; z-index:1;}
+  .apply-cta-text{max-width:560px;}
+  .apply-cta-text .eyebrow{color:var(--gold-light);}
+  .apply-cta-text .eyebrow::before{background:var(--gold-light);}
+  .apply-cta-text h2{font-size:28px; font-weight:700; color:var(--white);}
+  .apply-cta-text p{margin-top:12px; font-size:14.5px; color:#CFDDE2; line-height:1.7;}
+  @media (max-width:720px){
+    .apply-cta-inner{flex-direction:column; text-align:center;}
+  }
+
+  /* ===== FULL APPLY PAGE (opens via anchor in a new tab) ===== */
+  .apply-full-hero{
+    background:linear-gradient(115deg, var(--navy-deep) 0%, var(--navy) 45%, var(--navy-mid) 72%, #1A5064 100%);
+    color:var(--white); padding:90px 0 60px; text-align:center;
+  }
+  .apply-full-hero-inner{max-width:760px; margin:0 auto; padding:0 32px;}
+  .apply-full-hero h2{font-size:38px; font-weight:700; line-height:1.18; margin-top:6px;}
+  .apply-full-hero .apply-accent{color:var(--gold-light); display:block; font-style:italic; font-weight:600;}
+  .apply-full-hero p{margin-top:18px; font-size:16px; color:#CFDDE2; line-height:1.7;}
+
+  section.slides-section{padding:90px 0 40px;}
+  .slideshow-frame{
+    position:relative; max-width:820px; margin:0 auto; border-radius:8px; overflow:hidden; aspect-ratio:16/9;
+    box-shadow:0 30px 60px rgba(14,56,70,.2); background:linear-gradient(150deg,#123a4a,#1d5568);
+  }
+  .apply-slide{position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity 1.2s ease; z-index:0;}
+  .apply-slide.active{opacity:1; z-index:1;}
+  .apply-slide-nav{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:3; width:44px; height:44px; border-radius:50%;
+    border:1px solid rgba(246,205,110,.55); background:rgba(8,30,39,.55); color:#fff; display:none;
+    align-items:center; justify-content:center; cursor:pointer; font-size:20px; transition:background .2s ease;
+  }
+  .apply-slide-nav:hover{background:rgba(8,30,39,.85);}
+  .apply-slide-nav.prev{left:16px;} .apply-slide-nav.next{right:16px;}
+  .apply-slide-dots{position:absolute; bottom:16px; left:0; right:0; z-index:3; display:none; align-items:center; justify-content:center; gap:7px;}
+  .apply-slide-dot{width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.55); cursor:pointer; transition:background .2s ease, transform .2s ease;}
+  .apply-slide-dot.active{background:var(--gold); transform:scale(1.4);}
+  .apply-slide-fallback{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:16px; color:rgba(246,205,110,.5); text-align:center; padding:20px;}
+
+  section.about-copy{padding:60px 0 90px; background:var(--cream);}
+  .about-copy .wrap{max-width:760px;}
+  .about-copy p{font-size:15.5px; color:var(--slate); line-height:1.85; white-space:pre-line;}
+
+  section.videos-section{padding:90px 0;}
+  .video-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:30px;}
+  .video-card{border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--paper);}
+  .video-embed{position:relative; width:100%; aspect-ratio:16/9; background:var(--navy-deep);}
+  .video-embed iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
+  .video-fallback-link{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:var(--gold-light); font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.05em;}
+  .video-card-title{padding:16px 18px; font-size:14px; font-weight:700; color:var(--navy-deep);}
+  .videos-empty{text-align:center; color:var(--slate); font-size:14px; padding:20px;}
+
+  section.apply-final-cta{
+    background:linear-gradient(100deg, var(--gold-deep) 0%, var(--gold) 45%, var(--gold-light) 100%);
+    padding:56px 0; text-align:center;
+  }
+  section.apply-final-cta h2{font-size:26px; color:var(--navy-deep); margin-bottom:14px;}
+  section.apply-final-cta p{color:#5A430E; font-size:14px; margin-bottom:26px; max-width:480px; margin-left:auto; margin-right:auto;}
+
+  @media (max-width:720px){
+    .apply-full-hero h2{font-size:30px;}
+    .video-grid{grid-template-columns:1fr;}
+    .apply-slide-nav{width:36px; height:36px; font-size:16px;}
+  }
+
   section.testi{padding:100px 0;}
   .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:10px;}
   .t-card{border:1px solid var(--line); border-radius:6px; padding:32px; position:relative; background:var(--paper);}
@@ -421,6 +499,7 @@
       <a href="#products">Products</a>
       <a href="#awards">Awards</a>
       <a href="#testimonials">Testimonials</a>
+      <a href="#apply-full" target="_blank" rel="noopener">Apply</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-cta">
@@ -610,13 +689,24 @@
   </div>
 </section>
 
+<section class="apply-cta-section" id="apply-teaser">
+  <div class="wrap apply-cta-inner">
+    <div class="apply-cta-text">
+      <span class="eyebrow">Career Opportunity</span>
+      <h2>Apply as a Financial Advisor</h2>
+      <p>Curious what it's like to build a career with our team? See real photos, hear from current advisors, and learn how to get started.</p>
+    </div>
+    <a class="btn btn-gold" href="#apply-full" target="_blank" rel="noopener">Learn More &amp; Apply →</a>
+  </div>
+</section>
+
 <section class="testi" id="testimonials">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Client Feedback &amp; Ratings</span>
       <h2>What My Clients Say</h2>
     </div>
-    <div class="testi-grid">
+    <div class="testi-grid" id="testiGrid">
       <div class="t-card">
         <div class="quote-mark">"</div>
         <div class="stars">★★★★★</div>
@@ -636,8 +726,50 @@
         <div class="t-person"><div class="t-avatar">A</div><div><h5>Aira L.</h5><small>Business Owner</small></div></div>
       </div>
     </div>
+    <div style="text-align:center; margin-top:40px;">
+      <button class="btn btn-navy" onclick="openFeedbackModal()">Share Your Feedback</button>
+    </div>
   </div>
 </section>
+
+<div class="modal-overlay" id="feedbackModalOverlay" onclick="if(event.target===this) closeFeedbackModal()">
+  <div class="modal-card" style="max-width:460px;">
+    <button class="modal-close" onclick="closeFeedbackModal()" aria-label="Close">✕</button>
+    <div class="modal-body" id="feedbackMainView">
+      <h3>Share Your Feedback</h3>
+      <p style="margin-bottom:16px;">Your review will appear on the site once Jaymar approves it.</p>
+      <form class="lead-form" id="feedbackForm" onsubmit="return submitFeedbackForm(event)">
+        <label>Your Rating</label>
+        <div class="star-picker" id="starPicker">
+          <span class="star-pick" data-val="1">★</span>
+          <span class="star-pick" data-val="2">★</span>
+          <span class="star-pick" data-val="3">★</span>
+          <span class="star-pick" data-val="4">★</span>
+          <span class="star-pick" data-val="5">★</span>
+        </div>
+        <input type="hidden" id="feedbackRating" value="5">
+
+        <label>Your Name</label>
+        <input type="text" id="feedbackName" required>
+
+        <label>Occupation (optional)</label>
+        <input type="text" id="feedbackRole" placeholder="e.g. Entrepreneur, Nurse, OFW">
+
+        <label>Your Feedback</label>
+        <textarea id="feedbackMessage" required rows="4" placeholder="Tell us about your experience..."></textarea>
+
+        <button type="submit" class="lead-submit-btn" id="feedbackSubmitBtn">Submit Feedback</button>
+        <div class="lead-status" id="feedbackStatus"></div>
+      </form>
+    </div>
+    <div class="lead-success" id="feedbackSuccess">
+      <div class="checkmark">✓</div>
+      <h3>Thank You!</h3>
+      <p>Your feedback has been submitted and will appear on the site once approved.</p>
+      <button class="btn btn-gold" onclick="closeFeedbackModal()">Close</button>
+    </div>
+  </div>
+</div>
 
 <section class="cta-strip" id="contact">
   <div class="wrap cta-inner">
@@ -649,6 +781,55 @@
       </div>
     </div>
     <a class="btn btn-navy" id="bottomCtaBtn" href="mailto:jaymar.castro@sunlife.com.ph">Book a Free Consultation</a>
+  </div>
+</section>
+
+<section class="apply-full-hero" id="apply-full">
+  <div class="apply-full-hero-inner">
+    <span class="eyebrow" style="justify-content:center;">Join the GGE Sales Team</span>
+    <h2>Apply as a<span class="apply-accent">Financial Advisor</span></h2>
+    <p id="applySubtitle">Build a meaningful career helping Filipino families achieve financial security — with mentorship, training, and a team behind you every step of the way.</p>
+  </div>
+</section>
+
+<section class="slides-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Life on the Team</span>
+      <h2 id="applyGalleryTitle">Me &amp; My Team in Action</h2>
+    </div>
+    <div class="slideshow-frame" id="applySlideFrame">
+      <div class="apply-slide-fallback" id="applySlideFallback">Photos coming soon</div>
+      <button class="apply-slide-nav prev" onclick="applySlidePrev()" aria-label="Previous photo">‹</button>
+      <button class="apply-slide-nav next" onclick="applySlideNext()" aria-label="Next photo">›</button>
+      <div class="apply-slide-dots" id="applySlideDots"></div>
+    </div>
+  </div>
+</section>
+
+<section class="about-copy">
+  <div class="wrap">
+    <p id="applyBody">Starting a career in financial services can feel overwhelming — but you won't be doing it alone. Our team provides structured training, one-on-one mentorship, and a proven system for building a sustainable practice. Whether you're a fresh graduate exploring your first career, or a professional looking for a meaningful shift, there's a path here for you.</p>
+  </div>
+</section>
+
+<section class="videos-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Watch &amp; Learn</span>
+      <h2>Hear From the Team</h2>
+    </div>
+    <div class="video-grid" id="videoGrid">
+      <div class="videos-empty">Videos will appear here soon.</div>
+    </div>
+  </div>
+</section>
+
+<section class="apply-final-cta">
+  <div class="wrap" style="text-align:center;">
+    <h2>Ready to build a brighter career?</h2>
+    <p>Message Jaymar directly to learn about the application process, requirements, and next steps.</p>
+    <a class="btn btn-navy" id="applyMessengerBtn" href="#" target="_blank" rel="noopener">Apply via Messenger</a>
   </div>
 </section>
 
@@ -760,6 +941,246 @@ function whoStartAutoplay(){
 function whoStopAutoplay(){
   if(whoSlideTimer){ clearInterval(whoSlideTimer); whoSlideTimer = null; }
 }
+
+// ===== Apply as a Financial Advisor: photo slideshow (same 3s auto-fade pattern) =====
+var applySlideIndex = 0;
+var applySlideTimer = null;
+
+function buildApplySlides(photos){
+  var frame = document.getElementById('applySlideFrame');
+  var fallback = document.getElementById('applySlideFallback');
+  if(!frame) return;
+  if(!photos || !photos.length){
+    if(fallback) fallback.style.display = 'flex';
+    return;
+  }
+  if(fallback) fallback.style.display = 'none';
+  frame.querySelectorAll('.apply-slide').forEach(function(el){ el.remove(); });
+  var dotsContainer = document.getElementById('applySlideDots');
+  dotsContainer.innerHTML = '';
+
+  photos.forEach(function(url, i){
+    var slide = document.createElement('div');
+    slide.className = 'apply-slide' + (i === 0 ? ' active' : '');
+    slide.style.backgroundImage = "url('" + url + "')";
+    frame.insertBefore(slide, frame.firstChild);
+
+    var dot = document.createElement('span');
+    dot.className = 'apply-slide-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = function(){ applyGoToSlide(i); };
+    dotsContainer.appendChild(dot);
+  });
+
+  applySlideIndex = 0;
+  var navEls = frame.querySelectorAll('.apply-slide-nav');
+  if(photos.length > 1){
+    navEls.forEach(function(n){ n.style.display = 'flex'; });
+    dotsContainer.style.display = 'flex';
+    applyStartAutoplay();
+  } else {
+    navEls.forEach(function(n){ n.style.display = 'none'; });
+    dotsContainer.style.display = 'none';
+  }
+}
+
+function applyShowSlide(i){
+  var frame = document.getElementById('applySlideFrame');
+  if(!frame) return;
+  var slides = frame.querySelectorAll('.apply-slide');
+  var dots = document.querySelectorAll('#applySlideDots .apply-slide-dot');
+  slides.forEach(function(s, idx){ s.classList.toggle('active', idx === i); });
+  dots.forEach(function(d, idx){ d.classList.toggle('active', idx === i); });
+  applySlideIndex = i;
+}
+function applySlideNext(){
+  var count = document.querySelectorAll('#applySlideFrame .apply-slide').length;
+  if(count < 2) return;
+  applyShowSlide((applySlideIndex + 1) % count);
+  applyStartAutoplay();
+}
+function applySlidePrev(){
+  var count = document.querySelectorAll('#applySlideFrame .apply-slide').length;
+  if(count < 2) return;
+  applyShowSlide((applySlideIndex - 1 + count) % count);
+  applyStartAutoplay();
+}
+function applyGoToSlide(i){ applyShowSlide(i); applyStartAutoplay(); }
+function applyStartAutoplay(){
+  if(applySlideTimer) clearInterval(applySlideTimer);
+  applySlideTimer = setInterval(function(){
+    var count = document.querySelectorAll('#applySlideFrame .apply-slide').length;
+    if(count > 1) applyShowSlide((applySlideIndex + 1) % count);
+  }, 3000);
+}
+
+// ===== YouTube embed helper =====
+function getYouTubeEmbedUrl(url){
+  if(!url) return null;
+  var m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{6,})/);
+  if(m && m[1]) return 'https://www.youtube.com/embed/' + m[1];
+  return null;
+}
+
+function buildVideoGrid(videos){
+  var grid = document.getElementById('videoGrid');
+  if(!grid) return;
+  grid.innerHTML = '';
+  var list = (videos || []).filter(function(v){ return v && v.url; });
+  if(!list.length){
+    grid.innerHTML = '<div class="videos-empty">Videos will appear here soon.</div>';
+    return;
+  }
+  list.forEach(function(v){
+    var card = document.createElement('div');
+    card.className = 'video-card';
+    var embedUrl = getYouTubeEmbedUrl(v.url);
+    var embedHtml;
+    if(embedUrl){
+      embedHtml = '<div class="video-embed"><iframe src="' + embedUrl + '" title="' + (v.title || 'Video') + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+    } else {
+      embedHtml = '<div class="video-embed"><a class="video-fallback-link" href="' + v.url + '" target="_blank" rel="noopener"><span style="font-size:32px;">▶</span>Watch Video</a></div>';
+    }
+    card.innerHTML = embedHtml + '<div class="video-card-title">' + (v.title || 'Watch') + '</div>';
+    grid.appendChild(card);
+  });
+}
+
+// ===== Client feedback / testimonials =====
+var feedbackRatingValue = 5;
+
+function initStarPicker(){
+  var stars = document.querySelectorAll('#starPicker .star-pick');
+  stars.forEach(function(star){
+    star.onclick = function(){
+      feedbackRatingValue = parseInt(star.getAttribute('data-val'), 10);
+      document.getElementById('feedbackRating').value = feedbackRatingValue;
+      paintStars(feedbackRatingValue);
+    };
+  });
+  paintStars(feedbackRatingValue);
+}
+
+function paintStars(val){
+  document.querySelectorAll('#starPicker .star-pick').forEach(function(star){
+    var v = parseInt(star.getAttribute('data-val'), 10);
+    star.classList.toggle('filled', v <= val);
+  });
+}
+
+function resetFeedbackModal(){
+  document.getElementById('feedbackMainView').style.display = '';
+  document.getElementById('feedbackSuccess').classList.remove('active');
+  document.getElementById('feedbackForm').reset();
+  feedbackRatingValue = 5;
+  document.getElementById('feedbackRating').value = 5;
+  paintStars(5);
+  var status = document.getElementById('feedbackStatus');
+  status.textContent = '';
+  status.className = 'lead-status';
+  var btn = document.getElementById('feedbackSubmitBtn');
+  btn.disabled = false;
+  btn.textContent = 'Submit Feedback';
+}
+
+function openFeedbackModal(){
+  resetFeedbackModal();
+  var overlay = document.getElementById('feedbackModalOverlay');
+  overlay.style.display = 'flex';
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){ overlay.classList.add('active'); });
+  });
+  document.body.style.overflow = 'hidden';
+}
+
+function closeFeedbackModal(){
+  var overlay = document.getElementById('feedbackModalOverlay');
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+  setTimeout(function(){ overlay.style.display = 'none'; resetFeedbackModal(); }, 1000);
+}
+
+function submitFeedbackForm(event){
+  event.preventDefault();
+
+  if(!SITE_CONFIG.scriptUrl || SITE_CONFIG.scriptUrl.indexOf('https://script.google.com') !== 0){
+    var status = document.getElementById('feedbackStatus');
+    status.textContent = 'This form is not connected yet.';
+    status.className = 'lead-status err';
+    return false;
+  }
+
+  var payload = {
+    rating: feedbackRatingValue,
+    name: document.getElementById('feedbackName').value,
+    role: document.getElementById('feedbackRole').value,
+    message: document.getElementById('feedbackMessage').value
+  };
+
+  var btn = document.getElementById('feedbackSubmitBtn');
+  var status = document.getElementById('feedbackStatus');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  status.textContent = '';
+  status.className = 'lead-status';
+
+  fetch(SITE_CONFIG.scriptUrl, {
+    method: 'POST',
+    headers: {'Content-Type': 'text/plain;charset=utf-8'},
+    body: JSON.stringify({ action: 'submitTestimonial', data: payload })
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(res){
+    if(res.success){
+      document.getElementById('feedbackMainView').style.display = 'none';
+      document.getElementById('feedbackSuccess').classList.add('active');
+    } else {
+      status.textContent = 'Something went wrong: ' + (res.error || 'please try again.');
+      status.className = 'lead-status err';
+      btn.disabled = false;
+      btn.textContent = 'Submit Feedback';
+    }
+  })
+  .catch(function(){
+    status.textContent = 'Could not send — check your connection and try again.';
+    status.className = 'lead-status err';
+    btn.disabled = false;
+    btn.textContent = 'Submit Feedback';
+  });
+
+  return false;
+}
+
+function loadApprovedTestimonials(){
+  if(!SITE_CONFIG.scriptUrl || SITE_CONFIG.scriptUrl.indexOf('https://script.google.com') !== 0) return;
+  fetch(SITE_CONFIG.scriptUrl + '?type=testimonials')
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if(!res.success || !Array.isArray(res.testimonials) || !res.testimonials.length) return; // keep default examples
+      var grid = document.getElementById('testiGrid');
+      if(!grid) return;
+      grid.innerHTML = '';
+      res.testimonials.slice(0, 9).forEach(function(t){
+        var card = document.createElement('div');
+        card.className = 't-card';
+        var initial = (t.name || '?').trim().charAt(0).toUpperCase();
+        var starCount = Math.max(1, Math.min(5, parseInt(t.rating, 10) || 5));
+        var starsHtml = '';
+        for(var i=0;i<starCount;i++) starsHtml += '★';
+        card.innerHTML =
+          '<div class="quote-mark">"</div>' +
+          '<div class="stars">' + starsHtml + '</div>' +
+          '<p>' + (t.message || '') + '</p>' +
+          '<div class="t-person"><div class="t-avatar">' + initial + '</div><div><h5>' + (t.name || '') + '</h5><small>' + (t.role || '') + '</small></div></div>';
+        grid.appendChild(card);
+      });
+    })
+    .catch(function(err){ console.error('Could not load testimonials:', err); });
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  initStarPicker();
+  loadApprovedTestimonials();
+});
 
 // ===== Product detail modal =====
 var productsData = [
@@ -928,7 +1349,26 @@ function submitLeadForm(event){
         bottomCta.target = '_blank';
         bottomCta.rel = 'noopener';
       }
+      var applyMsgrBtn = document.getElementById('applyMessengerBtn');
+      if(applyMsgrBtn) applyMsgrBtn.href = SITE_CONFIG.messengerLink;
     }
+
+    if(data.applyPageTitle){
+      var applyTitleEl = document.getElementById('applyGalleryTitle');
+      if(applyTitleEl) applyTitleEl.textContent = data.applyPageTitle;
+    }
+    if(data.applyPageSubtitle){
+      var applySubEl = document.getElementById('applySubtitle');
+      if(applySubEl) applySubEl.textContent = data.applyPageSubtitle;
+    }
+    if(data.applyPageBody){
+      var applyBodyEl = document.getElementById('applyBody');
+      if(applyBodyEl) applyBodyEl.textContent = data.applyPageBody;
+    }
+    var applyPhotosArr = Array.isArray(data.applyPagePhotos) ? data.applyPagePhotos.filter(function(u){return !!u;}) : [];
+    buildApplySlides(applyPhotosArr);
+    var applyVideosArr = Array.isArray(data.applyPageVideos) ? data.applyPageVideos : [];
+    buildVideoGrid(applyVideosArr);
 
     if(data.heroHeadline){
       var h1 = document.getElementById('heroHeadline');
