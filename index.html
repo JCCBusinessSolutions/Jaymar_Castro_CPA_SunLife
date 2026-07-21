@@ -72,6 +72,7 @@
   .nav-inner{
     max-width:1200px; margin:0 auto; padding:18px 32px;
     display:flex; align-items:center; justify-content:space-between; gap:24px;
+    position:relative;
   }
   .brand{display:flex; align-items:center; gap:11px; font-weight:700; font-size:20px; color:var(--navy-deep); letter-spacing:.01em;}
   nav.links{display:flex; gap:32px; font-size:13px; font-weight:600; letter-spacing:.02em; color:var(--ink);}
@@ -81,7 +82,7 @@
   nav.links a.active::after{
     content:""; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--gold);
   }
-  .menu-btn{display:none; background:none; border:none; font-size:24px; cursor:pointer; color:var(--navy-deep);}
+  .menu-btn{display:none; background:none; border:none; font-size:24px; cursor:pointer; color:var(--navy-deep); line-height:1; z-index:101;}
 
   /* ===== HERO ===== */
   .hero{
@@ -449,7 +450,15 @@
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 960px){
-    nav.links{display:none;}
+    nav.links{
+      display:none; position:absolute; top:100%; left:0; right:0; z-index:100;
+      flex-direction:column; gap:0; background:var(--paper); border-bottom:1px solid var(--line);
+      box-shadow:0 16px 30px rgba(14,56,70,.14); padding:8px 24px 14px;
+    }
+    nav.links.mobile-open{display:flex;}
+    nav.links a{padding:12px 0; opacity:.85; border-bottom:1px solid var(--line);}
+    nav.links a:last-child{border-bottom:none;}
+    nav.links a.active::after{display:none;}
     .menu-btn{display:block;}
     .hero-inner{grid-template-columns:1fr; padding-top:44px;}
     .hero-portrait{order:-1; text-align:center;}
@@ -499,13 +508,13 @@
       <a href="#products">Products</a>
       <a href="#awards">Awards</a>
       <a href="#testimonials">Testimonials</a>
-      <a href="#apply-full" target="_blank" rel="noopener">Apply</a>
+      <a href="#apply-full">Apply</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-cta">
       <a class="btn btn-navy" href="#contact" style="padding:12px 22px; font-size:11.5px;">Book a Consultation</a>
     </div>
-    <button class="menu-btn">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
   </div>
 </header>
 
@@ -696,7 +705,7 @@
       <h2>Apply as a Financial Advisor</h2>
       <p>Curious what it's like to build a career with our team? See real photos, hear from current advisors, and learn how to get started.</p>
     </div>
-    <a class="btn btn-gold" href="#apply-full" target="_blank" rel="noopener">Learn More &amp; Apply →</a>
+    <a class="btn btn-gold" href="#apply-full">Learn More &amp; Apply →</a>
   </div>
 </section>
 
@@ -738,7 +747,7 @@
     <div class="modal-body" id="feedbackMainView">
       <h3>Share Your Feedback</h3>
       <p style="margin-bottom:16px;">Your review will appear on the site once Jaymar approves it.</p>
-      <form class="lead-form" id="feedbackForm" onsubmit="return submitFeedbackForm(event)">
+      <form class="lead-form active" id="feedbackForm" onsubmit="return submitFeedbackForm(event)">
         <label>Your Rating</label>
         <div class="star-picker" id="starPicker">
           <span class="star-pick" data-val="1">★</span>
@@ -1180,6 +1189,28 @@ function loadApprovedTestimonials(){
 document.addEventListener('DOMContentLoaded', function(){
   initStarPicker();
   loadApprovedTestimonials();
+
+  // ===== Mobile hamburger menu =====
+  var menuBtn = document.getElementById('menuBtn');
+  var navLinks = document.querySelector('nav.links');
+  if(menuBtn && navLinks){
+    menuBtn.onclick = function(){
+      var isOpen = navLinks.classList.toggle('mobile-open');
+      menuBtn.textContent = isOpen ? '✕' : '☰';
+    };
+    navLinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        navLinks.classList.remove('mobile-open');
+        menuBtn.textContent = '☰';
+      });
+    });
+    document.addEventListener('click', function(e){
+      if(navLinks.classList.contains('mobile-open') && !navLinks.contains(e.target) && e.target !== menuBtn){
+        navLinks.classList.remove('mobile-open');
+        menuBtn.textContent = '☰';
+      }
+    });
+  }
 });
 
 // ===== Product detail modal =====
