@@ -1330,37 +1330,30 @@ function submitFeedbackForm(event){
   return false;
 }
 
-function loadApprovedTestimonials(){
-  if(!SITE_CONFIG.scriptUrl || SITE_CONFIG.scriptUrl.indexOf('https://script.google.com') !== 0) return;
-  fetch(SITE_CONFIG.scriptUrl + '?type=testimonials')
-    .then(function(r){ return r.json(); })
-    .then(function(res){
-      if(!res.success || !Array.isArray(res.testimonials) || !res.testimonials.length) return; // keep default examples
-      var grid = document.getElementById('testiGrid');
-      if(!grid) return;
-      grid.innerHTML = '';
-      res.testimonials.slice(0, 9).forEach(function(t){
-        var card = document.createElement('div');
-        card.className = 't-card';
-        var initial = (t.name || '?').trim().charAt(0).toUpperCase();
-        var starCount = Math.max(1, Math.min(5, parseInt(t.rating, 10) || 5));
-        var starsHtml = '';
-        for(var i=0;i<starCount;i++) starsHtml += '★';
-        card.innerHTML =
-          '<div class="quote-mark">"</div>' +
-          '<div class="stars">' + starsHtml + '</div>' +
-          '<p>' + (t.message || '') + '</p>' +
-          '<div class="t-person"><div class="t-avatar">' + initial + '</div><div><h5>' + (t.name || '') + '</h5><small>' + (t.role || '') + '</small></div></div>';
-        grid.appendChild(card);
-      });
-    })
-    .catch(function(err){ console.error('Could not load testimonials:', err); });
+function renderApprovedTestimonials(testimonials){
+  if(!Array.isArray(testimonials) || !testimonials.length) return; // keep default examples
+  var grid = document.getElementById('testiGrid');
+  if(!grid) return;
+  grid.innerHTML = '';
+  testimonials.slice(0, 9).forEach(function(t){
+    var card = document.createElement('div');
+    card.className = 't-card';
+    var initial = (t.name || '?').trim().charAt(0).toUpperCase();
+    var starCount = Math.max(1, Math.min(5, parseInt(t.rating, 10) || 5));
+    var starsHtml = '';
+    for(var i=0;i<starCount;i++) starsHtml += '★';
+    card.innerHTML =
+      '<div class="quote-mark">"</div>' +
+      '<div class="stars">' + starsHtml + '</div>' +
+      '<p>' + (t.message || '') + '</p>' +
+      '<div class="t-person"><div class="t-avatar">' + initial + '</div><div><h5>' + (t.name || '') + '</h5><small>' + (t.role || '') + '</small></div></div>';
+    grid.appendChild(card);
+  });
 }
 
 
 document.addEventListener('DOMContentLoaded', function(){
   initStarPicker();
-  loadApprovedTestimonials();
 
   // ===== Mobile hamburger menu =====
   var menuBtn = document.getElementById('menuBtn');
@@ -1528,9 +1521,31 @@ function submitLeadForm(event){
 (function(){
   if(!SITE_CONFIG.scriptUrl || SITE_CONFIG.scriptUrl.indexOf('https://script.google.com') !== 0) return; // not configured yet, keep defaults
 
+  var CACHE_KEY = 'jccSiteContentCache';
+
+  // ===== Show cached content INSTANTLY if we have it from a previous visit =====
+  // This only affects repeat visitors — first-time visitors have nothing cached
+  // yet and just wait for the normal fetch below, same as always.
+  try {
+    var cached = localStorage.getItem(CACHE_KEY);
+    if(cached){
+      var cachedData = JSON.parse(cached);
+      if(cachedData && Object.keys(cachedData).length) applyContent(cachedData);
+    }
+  } catch(e){
+    // localStorage unavailable (private browsing, storage full, etc.) — no big deal,
+    // it just behaves like a first-time visitor and waits for the fetch below.
+  }
+
+  // ===== Always fetch fresh data in the background too, and update the cache =====
   fetch(SITE_CONFIG.scriptUrl)
     .then(function(r){ return r.json(); })
-    .then(function(data){ if(data && Object.keys(data).length) applyContent(data); })
+    .then(function(data){
+      if(data && Object.keys(data).length){
+        applyContent(data);
+        try { localStorage.setItem(CACHE_KEY, JSON.stringify(data)); } catch(e){ /* non-critical */ }
+      }
+    })
     .catch(function(err){ console.error('Could not load site content:', err); });
 
   function applyContent(data){
@@ -1545,6 +1560,10 @@ function submitLeadForm(event){
 
     if(data.layoutStyle){
       document.body.setAttribute('data-layout', data.layoutStyle);
+    }
+
+    if(Array.isArray(data.approvedTestimonials)){
+      renderApprovedTestimonials(data.approvedTestimonials);
     }
 
     SITE_CONFIG.messengerLink = data.messengerLink || '';
