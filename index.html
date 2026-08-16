@@ -143,6 +143,7 @@
   }
   .watch:hover .play{background:rgba(255,255,255,.1);}
   .watch span{display:block; color:#B9C9CE; font-weight:500; font-size:11px; text-transform:none; letter-spacing:0; margin-top:2px;}
+  .hero-arc-line{display:none;}
   .hero-portrait{position:relative; text-align:center;}
   .portrait-frame{
     width:100%; max-width:380px; aspect-ratio:3/4; margin:0 auto; border-radius:6px;
@@ -623,6 +624,534 @@
     body[data-layout="2"] .who-text{order:1;}
     body[data-layout="2"] .who-photo{order:2; margin-top:24px;}
   }
+  /* =====================================================================
+     STYLE 3 — "YELLOW ELEGANT FEMALE"  (matches approved reference)
+     Cream-forward, bright, optimistic, premium. Navy structure, warm
+     golden-yellow used strategically. Signature: a large arched portrait
+     wrapped in a curved gold arc in the hero.
+
+     Scoped to layout 4 — its own dedicated slot in the Admin layout
+     picker ("Style 3 — Elegant Female"). Layouts 1/2/3 untouched.
+     NO Sun Life logo/wordmark/identity anywhere.
+     ===================================================================== */
+  body[data-layout="4"]{
+    --navy:#15304C; --navy-deep:#0C2033; --navy-mid:#1E4064;
+    --gold:#E4A93A; --gold-deep:#B07E1C; --gold-light:#F4CE72;
+    --champagne:#EBD9AE;
+    --cream:#FBF4E6; --paper:#FFFEFB; --ink:#16263A; --slate:#5E6B79; --line:#EBDFC5;
+    background:var(--cream);
+  }
+  body[data-layout="4"] h1, body[data-layout="4"] h2, body[data-layout="4"] h3, body[data-layout="4"] .serif{
+    font-weight:600; letter-spacing:-.01em;
+  }
+  body[data-layout="4"] .eyebrow{color:var(--gold-deep); font-weight:700; letter-spacing:.2em;}
+  body[data-layout="4"] .btn{border-radius:8px; letter-spacing:.07em;}
+  body[data-layout="4"] .btn-gold{
+    background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 58%, var(--gold-deep) 100%);
+    color:var(--navy-deep); box-shadow:0 12px 26px rgba(228,169,58,.32);
+  }
+  body[data-layout="4"] .btn-navy{background:var(--navy-deep); color:var(--gold-light); border:1px solid rgba(244,206,114,.3);}
+
+  /* ---------- HEADER: clean premium navy, gold underline + gold CTA ---------- */
+  body[data-layout="4"] header.site-nav{
+    background:rgba(12,32,51,.97); backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(228,169,58,.22); box-shadow:none;
+  }
+  body[data-layout="4"] .nav-inner{padding:20px 32px;}
+  body[data-layout="4"] .brand{color:#FFFFFF; gap:13px;}
+  body[data-layout="4"] nav.links{color:#DCE6EF; gap:32px;}
+  body[data-layout="4"] nav.links a{color:#DCE6EF; opacity:.82; letter-spacing:.07em;}
+  body[data-layout="4"] nav.links a:hover{opacity:1; color:var(--gold-light);}
+  body[data-layout="4"] nav.links a.active{opacity:1; color:#FFFFFF;}
+  body[data-layout="4"] nav.links a.active::after{height:1.5px; background:var(--gold);}
+  body[data-layout="4"] .menu-btn{color:var(--gold-light);}
+  body[data-layout="4"] .nav-cta .btn{
+    background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 58%, var(--gold-deep) 100%);
+    color:var(--navy-deep); border:none; font-weight:700;
+  }
+  @media (max-width:960px){
+    body[data-layout="4"] nav.links{
+      background:var(--navy-deep); border-bottom:1px solid rgba(228,169,58,.22); box-shadow:0 18px 34px rgba(12,32,51,.4);
+    }
+    body[data-layout="4"] nav.links a{border-bottom-color:rgba(255,255,255,.1);}
+  }
+
+  /* ---------- HERO: CREAM editorial split + curved gold-arc portrait ---------- */
+  body[data-layout="4"] .hero{background:var(--cream); color:var(--navy-deep); min-height:640px;}
+  /* Neutralise the dark navy overlay so the hero reads cream; a light cream
+     veil keeps text legible even if a bg photo happens to be set. */
+  body[data-layout="4"] .hero-bg{background:var(--cream);}
+  body[data-layout="4"] .hero-bg::after{
+    background:linear-gradient(100deg, var(--cream) 0%, var(--cream) 48%, rgba(251,244,230,.82) 62%, rgba(251,244,230,.32) 80%, rgba(251,244,230,0) 100%);
+  }
+  body[data-layout="4"] .hero h1{color:var(--navy-deep); text-shadow:none; font-weight:600; font-size:47px; line-height:1.16;}
+  body[data-layout="4"] .hero h1 .accent{color:var(--gold-deep); font-style:italic; font-weight:600;}
+  body[data-layout="4"] .hero p.lede{color:var(--slate); position:relative; padding-top:26px;}
+  body[data-layout="4"] .hero p.lede::before{content:""; position:absolute; top:0; left:0; width:58px; height:2px; background:var(--gold);}
+  body[data-layout="4"] .pillar{color:var(--navy);}
+  body[data-layout="4"] .pillar .picon{border-color:rgba(176,126,28,.4); background:rgba(228,169,58,.08); color:var(--gold-deep);}
+  body[data-layout="4"] .watch{color:var(--navy-deep);}
+  body[data-layout="4"] .watch .play{border-color:var(--gold); color:var(--navy-deep);}
+  body[data-layout="4"] .watch .play svg{fill:var(--navy-deep);}
+  body[data-layout="4"] .watch span{color:var(--slate);}
+
+  /* Signature curved gold arc: a gold shape sits behind the arched photo,
+     offset to the left/top so it reads as a gold crescent hugging it. */
+  body[data-layout="4"] .hero-portrait{position:relative; width:100%; max-width:454px; margin:0 auto;}
+  body[data-layout="4"] .hero-portrait::before{
+    content:""; position:absolute; z-index:0;
+    top:-12px; bottom:2px; left:-28px; right:12px;
+    border-radius:300px 300px 22px 22px;
+    background:linear-gradient(155deg, var(--gold-light) 0%, var(--gold) 52%, var(--gold-deep) 100%);
+    box-shadow:0 30px 60px rgba(176,126,28,.28);
+  }
+  body[data-layout="4"] .portrait-frame{
+    position:relative; z-index:1; width:100%; max-width:100%; margin:0;
+    aspect-ratio:4/5; border:none; border-radius:284px 284px 18px 18px;
+    box-shadow:0 24px 52px rgba(9,22,38,.32);
+  }
+  body[data-layout="4"] .portrait-frame::before{display:none;}
+  body[data-layout="4"] .photo-placeholder span{color:rgba(255,255,255,.85);}
+  /* Advisor name/titles as a navy card overlapping the photo foot */
+  body[data-layout="4"] .id-card{
+    position:absolute; z-index:3; left:-6px; bottom:20px; margin-top:0;
+    text-align:left; padding:15px 20px; border-radius:12px; backdrop-filter:blur(3px);
+    background:linear-gradient(120deg, rgba(12,32,51,.95), rgba(12,32,51,.82));
+    border:1px solid rgba(228,169,58,.4); box-shadow:0 16px 34px rgba(9,22,38,.4);
+  }
+  body[data-layout="4"] .id-card h3{font-size:17px; color:#FFFFFF;}
+  body[data-layout="4"] .id-card .rule{width:46px; margin:8px 0; background:var(--gold);}
+  body[data-layout="4"] .id-card ul{font-size:11.5px; line-height:1.75;}
+  body[data-layout="4"] .id-card .tagline{font-size:13px; margin-top:9px; color:var(--gold-light);}
+  body[data-layout="4"] .hero-ctas{margin-top:6px;}
+
+  /* Stat bar */
+  body[data-layout="4"] .stat-inner{
+    border-radius:14px; border-color:rgba(228,169,58,.22);
+    background:linear-gradient(160deg, var(--navy-deep), var(--navy));
+  }
+  body[data-layout="4"] .stat .sicon{border-color:var(--gold); color:var(--gold-light);}
+
+  /* ---------- ABOUT: cream editorial, gold icons, divided feature row ---------- */
+  body[data-layout="4"] section.who{padding:126px 0 110px; background:var(--cream);}
+  body[data-layout="4"] .who-photo .frame{border-radius:16px; box-shadow:0 30px 58px rgba(9,22,38,.22);}
+  body[data-layout="4"] .who-photo .frame::after{border-color:rgba(244,206,114,.5); inset:12px; border-radius:9px;}
+  body[data-layout="4"] .dot-grid{opacity:.4;}
+  body[data-layout="4"] .who h2{color:var(--navy-deep);}
+  body[data-layout="4"] .values{margin-top:38px;}
+  body[data-layout="4"] .value{
+    border-top:none; border-left:1px solid var(--line); padding:4px 0 4px 22px;
+  }
+  body[data-layout="4"] .value:first-child{border-left:none; padding-left:0;}
+  body[data-layout="4"] .value .vicon{color:var(--gold-deep);}
+  body[data-layout="4"] .value h4{color:var(--navy-deep);}
+
+  /* ---------- SOLUTIONS: flat white icon-cards, thin gold border, navy text --- */
+  body[data-layout="4"] section.products{
+    background:linear-gradient(180deg, var(--cream) 0%, #F6ECD6 100%);
+  }
+  body[data-layout="4"] .prod-grid{grid-template-columns:repeat(auto-fit, minmax(150px,1fr));}
+  body[data-layout="4"] .prod-card{
+    aspect-ratio:auto; background:var(--paper);
+    border:1px solid rgba(228,169,58,.34); border-radius:14px;
+    box-shadow:0 10px 24px rgba(21,48,76,.06);
+    display:flex; flex-direction:column; overflow:hidden;
+  }
+  body[data-layout="4"] .prod-card:hover{
+    border-color:var(--gold); transform:translateY(-6px); box-shadow:0 22px 40px rgba(21,48,76,.13);
+  }
+  body[data-layout="4"] .prod-photo{
+    position:relative; inset:auto; height:104px; margin-top:28px;
+    color:var(--gold-deep); background-size:cover; background-position:center; transform:none !important;
+  }
+  body[data-layout="4"] .prod-card:hover .prod-photo{transform:none !important;}
+  body[data-layout="4"] .prod-overlay{
+    position:relative; inset:auto; padding:14px 16px 26px; background:none; text-align:center;
+  }
+  body[data-layout="4"] .prod-overlay h4{color:var(--navy-deep); text-shadow:none; font-size:14.5px; line-height:1.35;}
+  body[data-layout="4"] .prod-cta{color:var(--gold-deep); justify-content:center; opacity:1; transform:none;}
+  body[data-layout="4"] .prod-card::after{display:none;}
+
+  /* ---------- MODAL / SLIDESHOW surfaces ---------- */
+  body[data-layout="4"] .modal-card{border-radius:16px; border-color:rgba(228,169,58,.3);}
+  body[data-layout="4"] .modal-photo, body[data-layout="4"] .slideshow-frame{
+    background:linear-gradient(160deg, var(--navy-mid), var(--navy));
+  }
+
+  /* ---------- TESTIMONIALS: editorial, large muted-gold quote ---------- */
+  body[data-layout="4"] section.testi{background:var(--cream);}
+  body[data-layout="4"] .t-card{
+    background:var(--paper); border-radius:14px; border-color:var(--line);
+    box-shadow:0 14px 32px rgba(21,48,76,.07);
+  }
+  body[data-layout="4"] .t-card .quote-mark{font-size:56px; color:var(--gold); opacity:.5;}
+  body[data-layout="4"] .stars{color:var(--gold-deep);}
+  body[data-layout="4"] .t-card p{font-size:15px; line-height:1.75;}
+  body[data-layout="4"] .t-avatar{background:var(--navy-deep); border:1px solid var(--gold); color:var(--gold-light);}
+  body[data-layout="4"] .t-person h5{color:var(--navy-deep);}
+
+  /* ---------- AWARDS: luxury recognition gallery on cream ---------- */
+  body[data-layout="4"] section.awards{
+    background:var(--cream); color:var(--ink);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:84px 0;
+  }
+  body[data-layout="4"] section.awards .sun-deco circle,
+  body[data-layout="4"] section.awards .sun-deco line{stroke:var(--gold);}
+  body[data-layout="4"] section.awards .sun-deco{opacity:.14;}
+  body[data-layout="4"] .awards-title h2{color:var(--navy-deep);}
+  body[data-layout="4"] .badge{width:120px;}
+  body[data-layout="4"] .badge .bicon{
+    border:1px solid var(--gold); color:var(--gold-deep);
+    background:var(--paper); box-shadow:0 12px 26px rgba(228,169,58,.14);
+  }
+  body[data-layout="4"] .badge span{color:var(--slate);}
+
+  /* ---------- CTA: strong navy, warm gold button + soft sunburst glow ---------- */
+  body[data-layout="4"] section.cta-strip,
+  body[data-layout="4"] section.apply-final-cta{
+    background:linear-gradient(105deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-mid) 100%);
+    position:relative; overflow:hidden;
+  }
+  body[data-layout="4"] section.cta-strip{padding:56px 0;}
+  body[data-layout="4"] section.cta-strip::after{
+    content:""; position:absolute; right:-40px; bottom:-120px; width:340px; height:340px;
+    border-radius:50%; pointer-events:none;
+    background:radial-gradient(circle, rgba(244,206,114,.28) 0%, rgba(244,206,114,.08) 40%, transparent 70%);
+  }
+  body[data-layout="4"] section.cta-strip .cta-inner{position:relative; z-index:1;}
+  body[data-layout="4"] section.cta-strip .cta-left h3,
+  body[data-layout="4"] section.apply-final-cta h2{color:#FFFFFF;}
+  body[data-layout="4"] section.cta-strip .cta-left p,
+  body[data-layout="4"] section.apply-final-cta p{color:#C8D4DE;}
+  body[data-layout="4"] section.cta-strip .cicon{background:var(--gold); color:var(--navy-deep);}
+  body[data-layout="4"] #bottomCtaBtn, body[data-layout="4"] #applyMessengerBtn{
+    background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 58%, var(--gold-deep) 100%);
+    color:var(--navy-deep); border:none; font-weight:700;
+  }
+  body[data-layout="4"] .apply-cta-text .eyebrow{color:var(--gold-light);}
+  body[data-layout="4"] .apply-full-hero{
+    background:linear-gradient(115deg, var(--navy-deep) 0%, var(--navy) 50%, var(--navy-mid) 100%);
+  }
+  body[data-layout="4"] .apply-full-hero .apply-accent{color:var(--gold-light);}
+  body[data-layout="4"] section.about-copy{background:var(--cream);}
+
+  /* ---------- FOOTER: deep navy, gold icons + micro-details ---------- */
+  body[data-layout="4"] footer{background:var(--navy-deep); border-top:1px solid rgba(228,169,58,.28); padding:38px 0;}
+  body[data-layout="4"] .foot-contact span:not(:last-child)::after{
+    content:""; display:inline-block; width:3px; height:3px; border-radius:50%;
+    background:var(--gold); margin-left:28px; vertical-align:middle;
+  }
+  body[data-layout="4"] .socials a{border-color:rgba(228,169,58,.34); color:var(--gold-light);}
+  body[data-layout="4"] .socials a:hover{border-color:var(--gold); background:rgba(228,169,58,.12);}
+
+  /* ---------- PREMIUM MICRO-INTERACTIONS ---------- */
+  body[data-layout="4"] .s3-reveal{
+    opacity:0; transform:translateY(26px);
+    transition:opacity .85s cubic-bezier(.2,.7,.2,1), transform .85s cubic-bezier(.2,.7,.2,1);
+    will-change:opacity, transform;
+  }
+  body[data-layout="4"] .s3-reveal.s3-in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .s3-reveal{opacity:1 !important; transform:none !important; transition:none !important;}
+    .btn:hover, .prod-card:hover, .badge:hover{transform:none !important;}
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1024px) and (min-width:721px){
+    body[data-layout="4"] .values{grid-template-columns:repeat(2,1fr); gap:20px 24px;}
+    body[data-layout="4"] .value:nth-child(3){border-left:none; padding-left:0;}
+  }
+  @media (max-width:960px){
+    body[data-layout="4"] .hero-copy{order:1;}
+    body[data-layout="4"] .hero-portrait{order:2; margin-top:34px; max-width:400px;}
+    body[data-layout="4"] .portrait-frame{border-radius:240px 240px 16px 16px;}
+    body[data-layout="4"] .hero-portrait::before{border-radius:256px 256px 20px 20px;}
+    body[data-layout="4"] .values{grid-template-columns:repeat(2,1fr); gap:24px;}
+    body[data-layout="4"] .value{border-left:none; padding-left:0;}
+  }
+  @media (max-width:720px){
+    body[data-layout="4"] .hero h1{font-size:33px;}
+    body[data-layout="4"] section.who{padding:74px 0 62px;}
+    body[data-layout="4"] .prod-grid{grid-template-columns:1fr 1fr; gap:14px;}
+    body[data-layout="4"] .badges{
+      flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x mandatory;
+      gap:22px; padding-bottom:12px; width:100%;
+      -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    }
+    body[data-layout="4"] .badges::-webkit-scrollbar{display:none;}
+    body[data-layout="4"] .badge{flex:0 0 auto; scroll-snap-align:center;}
+    body[data-layout="4"] .testi-grid{
+      display:flex; overflow-x:auto; scroll-snap-type:x mandatory;
+      gap:16px; padding-bottom:14px;
+      -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    }
+    body[data-layout="4"] .testi-grid::-webkit-scrollbar{display:none;}
+    body[data-layout="4"] .testi-grid > *{flex:0 0 86%; scroll-snap-align:center;}
+  }
+  @media (max-width:480px){
+    body[data-layout="4"] .prod-grid{grid-template-columns:1fr;}
+  }
+
+  /* =====================================================================
+     STYLE 4 — "YELLOW ELEGANT MALE"
+     Executive private-wealth register: midnight navy, restrained
+     champagne gold, heavy serif headlines. Gold is strategic (~10%),
+     never a background field.
+
+     Scoped to layout 5 — its own dedicated slot in the Admin layout
+     picker ("Style 4 — Elegant Male"). Layouts 1/2/3 are declared
+     earlier in this stylesheet and are deliberately left untouched.
+     ===================================================================== */
+  body[data-layout="5"]{
+    --navy:#132C42; --navy-deep:#0A1E30; --navy-mid:#1C3B57;
+    --gold:#C9A227; --gold-deep:#8F6E17; --gold-light:#DEC06B;
+    --cream:#FAF6EC; --paper:#FFFDF9; --ink:#101E2B; --slate:#5B6570; --line:#E4DCC6;
+  }
+  body[data-layout="5"] h1,
+  body[data-layout="5"] h2,
+  body[data-layout="5"] h3,
+  body[data-layout="5"] .serif{
+    font-weight:800; letter-spacing:-.015em;
+  }
+  body[data-layout="5"] .eyebrow{
+    color:var(--gold-deep); font-weight:700; letter-spacing:.22em;
+  }
+  body[data-layout="5"] .btn{border-radius:2px; letter-spacing:.1em;}
+  body[data-layout="5"] .btn-gold{
+    background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 60%, var(--gold-deep) 100%);
+    color:var(--navy-deep); box-shadow:0 10px 22px rgba(20,15,3,.26);
+  }
+  body[data-layout="5"] .btn-navy{
+    border:1px solid rgba(222,192,107,.35);
+  }
+
+  /* ---------- HEADER: dark navy sticky nav, gold underline, gold CTA ---------- */
+  body[data-layout="5"] header.site-nav{
+    background:rgba(10,30,48,.94); backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(201,162,39,.22); box-shadow:none;
+  }
+  body[data-layout="5"] .nav-inner{padding:22px 32px;}
+  body[data-layout="5"] .brand{color:var(--white); gap:13px;}
+  body[data-layout="5"] nav.links{color:#D6E0E8; gap:36px;}
+  body[data-layout="5"] nav.links a{
+    color:#D6E0E8; opacity:.78; letter-spacing:.1em;
+  }
+  body[data-layout="5"] nav.links a:hover{opacity:1; color:var(--gold-light);}
+  body[data-layout="5"] nav.links a.active{opacity:1; color:var(--white);}
+  body[data-layout="5"] nav.links a.active::after{
+    height:1.5px; background:var(--gold);
+  }
+  body[data-layout="5"] .menu-btn{color:var(--gold-light);}
+  body[data-layout="5"] .nav-cta .btn{
+    background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 60%, var(--gold-deep) 100%);
+    color:var(--navy-deep); border:none; font-weight:700;
+  }
+  @media (max-width:960px){
+    body[data-layout="5"] nav.links{
+      background:var(--navy-deep); border-bottom:1px solid rgba(201,162,39,.22); box-shadow:0 18px 34px rgba(3,10,17,.45);
+    }
+    body[data-layout="5"] nav.links a{border-bottom-color:rgba(255,255,255,.09);}
+  }
+
+  /* ---------- HERO: split composition + signature gold architectural arc ---------- */
+  body[data-layout="5"] .hero-bg::after{
+    background:
+      linear-gradient(100deg, var(--navy-deep) 0%, rgba(10,30,48,.96) 32%, rgba(10,30,48,.60) 58%, rgba(19,44,66,.26) 78%, rgba(19,44,66,.14) 100%),
+      linear-gradient(0deg, rgba(10,30,48,.6) 0%, transparent 30%);
+  }
+  body[data-layout="5"] .hero-inner{position:relative;}
+  body[data-layout="5"] .hero h1{font-size:47px; line-height:1.11; font-weight:800;}
+  body[data-layout="5"] .hero h1 .accent{
+    font-style:normal; font-weight:700; color:var(--gold-light);
+  }
+  body[data-layout="5"] .hero-arc-line{
+    display:block; position:absolute; left:52%; top:-8%; width:150px; height:116%;
+    transform:translateX(-50%); z-index:1; pointer-events:none;
+  }
+  body[data-layout="5"] .hero-arc-line path{
+    stroke-dasharray:1400; stroke-dashoffset:1400;
+    animation:arcDraw4 2.4s cubic-bezier(.5,.05,.2,1) .35s forwards;
+  }
+  @keyframes arcDraw4{ to{ stroke-dashoffset:0; } }
+  body[data-layout="5"] .portrait-frame{
+    border-radius:2px; border:1px solid rgba(222,192,107,.5);
+    box-shadow:0 34px 68px rgba(3,10,17,.52); max-width:400px;
+  }
+  body[data-layout="5"] .portrait-frame::before{
+    inset:12px; border-color:rgba(222,192,107,.32);
+  }
+  body[data-layout="5"] .tagline{font-style:normal; font-weight:700;}
+  body[data-layout="5"] .pillar .picon{
+    border-color:rgba(222,192,107,.42); background:rgba(222,192,107,.05);
+  }
+  body[data-layout="5"] .stat-inner{
+    border-radius:2px; border-color:rgba(222,192,107,.2);
+  }
+
+  /* ---------- ABOUT: editorial portrait, thin gold dividers, white space ---------- */
+  body[data-layout="5"] section.who{padding:134px 0 116px;}
+  body[data-layout="5"] .who-photo .frame{
+    border-radius:2px; box-shadow:0 32px 62px rgba(3,10,17,.32);
+  }
+  body[data-layout="5"] .who-photo .frame::after{
+    border-color:rgba(222,192,107,.42);
+  }
+  body[data-layout="5"] .dot-grid{opacity:.34;}
+  body[data-layout="5"] .value{border-top:1px solid rgba(201,162,39,.45);}
+  body[data-layout="5"] .value .vicon{color:var(--gold-deep);}
+
+  /* ---------- SOLUTIONS: deep navy field, premium dark cards ---------- */
+  body[data-layout="5"] section.products{
+    background:linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);
+  }
+  body[data-layout="5"] section.products .sec-head .eyebrow{color:var(--gold-light);}
+  body[data-layout="5"] section.products .sec-head h2{color:var(--white);}
+  body[data-layout="5"] .prod-card{
+    background:linear-gradient(160deg, var(--navy-mid) 0%, var(--navy) 100%);
+    border:1px solid rgba(222,192,107,.16); border-radius:3px;
+    box-shadow:0 10px 24px rgba(3,10,17,.34);
+  }
+  body[data-layout="5"] .prod-card:hover{
+    border-color:var(--gold); transform:translateY(-6px); box-shadow:0 22px 44px rgba(3,10,17,.5);
+  }
+  body[data-layout="5"] .prod-photo{color:rgba(222,192,107,.62);}
+  body[data-layout="5"] .prod-overlay{
+    background:linear-gradient(180deg, transparent 0%, rgba(10,30,48,.1) 30%, rgba(10,30,48,.94) 100%);
+  }
+  body[data-layout="5"] .prod-cta{color:var(--gold-light);}
+
+  /* ---------- MODAL / SLIDESHOW surfaces ---------- */
+  body[data-layout="5"] .modal-photo,
+  body[data-layout="5"] .slideshow-frame{
+    background:linear-gradient(160deg, var(--navy-mid), var(--navy));
+  }
+  body[data-layout="5"] .modal-card{
+    border-radius:3px; border-color:rgba(222,192,107,.28);
+  }
+
+  /* ---------- AWARDS: warm white recognition strip ---------- */
+  body[data-layout="5"] section.awards{
+    background:var(--cream); color:var(--ink);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:82px 0;
+  }
+  body[data-layout="5"] section.awards .sun-deco circle,
+  body[data-layout="5"] section.awards .sun-deco line{stroke:var(--gold-deep);}
+  body[data-layout="5"] section.awards .sun-deco{opacity:.13;}
+  body[data-layout="5"] .awards-title h2{color:var(--navy-deep);}
+  body[data-layout="5"] .badge .bicon{
+    border:1px solid var(--gold-deep); color:var(--gold-deep);
+    background:var(--paper); box-shadow:0 10px 24px rgba(20,15,3,.09);
+  }
+  body[data-layout="5"] .badge span{color:var(--slate);}
+
+  /* ---------- TESTIMONIALS: editorial quote treatment ---------- */
+  body[data-layout="5"] .t-card{
+    border-radius:2px; border-color:var(--line); box-shadow:0 14px 32px rgba(10,30,48,.06);
+  }
+  body[data-layout="5"] .t-card .quote-mark{
+    font-size:54px; color:var(--gold-deep); opacity:.85;
+  }
+  body[data-layout="5"] .stars{color:var(--gold-deep);}
+  body[data-layout="5"] .t-card p{font-size:15.5px; line-height:1.75;}
+  body[data-layout="5"] .t-avatar{
+    background:var(--navy-deep); border:1px solid var(--gold); color:var(--gold-light);
+  }
+
+  /* ---------- CTA: full-width dark navy, gold consultation button ---------- */
+  body[data-layout="5"] section.cta-strip,
+  body[data-layout="5"] section.apply-final-cta{
+    background:linear-gradient(100deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-mid) 100%);
+  }
+  body[data-layout="5"] section.cta-strip{padding:58px 0;}
+  body[data-layout="5"] section.cta-strip .cta-left h3,
+  body[data-layout="5"] section.apply-final-cta h2{color:var(--white);}
+  body[data-layout="5"] section.cta-strip .cta-left p,
+  body[data-layout="5"] section.apply-final-cta p{color:#C2CFD9;}
+  body[data-layout="5"] section.cta-strip .cicon{
+    background:var(--gold); color:var(--navy-deep);
+  }
+  body[data-layout="5"] #bottomCtaBtn,
+  body[data-layout="5"] #applyMessengerBtn{
+    background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 60%, var(--gold-deep) 100%);
+    color:var(--navy-deep); border:none; font-weight:700;
+  }
+  body[data-layout="5"] .apply-cta-text .eyebrow{color:var(--gold-light);}
+  body[data-layout="5"] .apply-full-hero{
+    background:linear-gradient(115deg, var(--navy-deep) 0%, var(--navy) 50%, var(--navy-mid) 100%);
+  }
+  body[data-layout="5"] .apply-full-hero .apply-accent{
+    font-style:normal; font-weight:700;
+  }
+
+  /* ---------- FOOTER: gold micro-details ---------- */
+  body[data-layout="5"] footer{
+    border-top:1px solid rgba(201,162,39,.28); padding:38px 0;
+  }
+  body[data-layout="5"] .foot-contact span:not(:last-child)::after{
+    content:""; display:inline-block; width:3px; height:3px; border-radius:50%;
+    background:var(--gold-deep); margin-left:28px; vertical-align:middle;
+  }
+  body[data-layout="5"] .socials a{border-color:rgba(201,162,39,.32);}
+  body[data-layout="5"] .socials a:hover{
+    border-color:var(--gold); background:rgba(201,162,39,.1);
+  }
+
+  /* ---------- PREMIUM MICRO-INTERACTIONS: fade-up on scroll ---------- */
+  body[data-layout="5"] .s4-reveal{
+    opacity:0; transform:translateY(26px);
+    transition:opacity .85s cubic-bezier(.2,.7,.2,1), transform .85s cubic-bezier(.2,.7,.2,1);
+    will-change:opacity, transform;
+  }
+  body[data-layout="5"] .s4-reveal.s4-in{
+    opacity:1; transform:none;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .s4-reveal{opacity:1 !important; transform:none !important; transition:none !important;}
+    .hero-arc-line path{animation:none !important; stroke-dashoffset:0 !important;}
+    .btn:hover, .prod-card:hover, .badge:hover{transform:none !important;}
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  /* Tablet: balanced two-column */
+  @media (max-width:1024px) and (min-width:721px){
+    body[data-layout="5"] .prod-grid{grid-template-columns:repeat(3,1fr);}
+    body[data-layout="5"] .values{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:960px){
+    body[data-layout="5"] .hero-arc-line{display:none;}
+    /* Mobile: hero text first, photo second */
+    body[data-layout="5"] .hero-copy{order:1;}
+    body[data-layout="5"] .hero-portrait{order:2; margin-top:30px;}
+  }
+  @media (max-width:720px){
+    body[data-layout="5"] .hero h1{font-size:33px;}
+    body[data-layout="5"] section.who{padding:76px 0 64px;}
+
+    /* Solutions become vertical cards */
+    body[data-layout="5"] .prod-grid{grid-template-columns:1fr; gap:16px;}
+    body[data-layout="5"] .prod-card{aspect-ratio:16/10;}
+
+    /* Awards become a horizontal scroll rail */
+    body[data-layout="5"] .badges{
+      flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x mandatory;
+      gap:24px; padding-bottom:12px; width:100%;
+      -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    }
+    body[data-layout="5"] .badges::-webkit-scrollbar{display:none;}
+    body[data-layout="5"] .badge{flex:0 0 auto; scroll-snap-align:center;}
+
+    /* Testimonials become one slide at a time */
+    body[data-layout="5"] .testi-grid{
+      display:flex; overflow-x:auto; scroll-snap-type:x mandatory;
+      gap:16px; padding-bottom:14px;
+      -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    }
+    body[data-layout="5"] .testi-grid::-webkit-scrollbar{display:none;}
+    body[data-layout="5"] .testi-grid > *{
+      flex:0 0 86%; scroll-snap-align:center;
+    }
+  }
 </style>
 </head>
 <body data-layout="1">
@@ -630,6 +1159,7 @@
 <header class="site-nav">
   <div class="nav-inner">
     <a class="brand" href="#home">
+      <!-- PERSONALIZE: swap this generic icon for your own company logo if you have one -->
       <svg width="28" height="28" viewBox="0 0 40 40"><circle cx="20" cy="20" r="9" fill="#ECAB23"/><g stroke="#ECAB23" stroke-width="2" stroke-linecap="round"><line x1="20" y1="2" x2="20" y2="7"/><line x1="20" y1="33" x2="20" y2="38"/><line x1="2" y1="20" x2="7" y2="20"/><line x1="33" y1="20" x2="38" y2="20"/><line x1="7" y1="7" x2="10.5" y2="10.5"/><line x1="29.5" y1="29.5" x2="33" y2="33"/><line x1="33" y1="7" x2="29.5" y2="10.5"/><line x1="10.5" y1="29.5" x2="7" y2="33"/></g></svg>
     </a>
     <nav class="links">
@@ -670,6 +1200,17 @@
         </a>
       </div>
     </div>
+    <svg class="hero-arc-line" viewBox="0 0 120 700" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M60 0 C -10 180, 130 300, 55 460 C 0 580, 90 640, 60 700" stroke="url(#heroArcGrad4)" stroke-width="1.4" fill="none"/>
+      <defs>
+        <linearGradient id="heroArcGrad4" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#C9A227" stop-opacity="0"/>
+          <stop offset=".18" stop-color="#DEC06B" stop-opacity=".85"/>
+          <stop offset=".82" stop-color="#DEC06B" stop-opacity=".85"/>
+          <stop offset="1" stop-color="#C9A227" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+    </svg>
     <div class="hero-portrait">
       <div class="portrait-frame" id="heroPortraitFrame">
         <div class="photo-placeholder">
@@ -983,6 +1524,7 @@
 <footer>
   <div class="wrap foot-inner">
     <a class="foot-brand" href="#home">
+      <!-- PERSONALIZE: swap this generic icon for your own company logo if you have one -->
       <svg width="28" height="28" viewBox="0 0 40 40"><circle cx="20" cy="20" r="9" fill="#ECAB23"/><g stroke="#ECAB23" stroke-width="2" stroke-linecap="round"><line x1="20" y1="2" x2="20" y2="7"/><line x1="20" y1="33" x2="20" y2="38"/><line x1="2" y1="20" x2="7" y2="20"/><line x1="33" y1="20" x2="38" y2="20"/><line x1="7" y1="7" x2="10.5" y2="10.5"/><line x1="29.5" y1="29.5" x2="33" y2="33"/><line x1="33" y1="7" x2="29.5" y2="10.5"/><line x1="10.5" y1="29.5" x2="7" y2="33"/></g></svg>
     </a>
     <div class="foot-contact">
@@ -1721,6 +2263,113 @@ function submitLeadForm(event){
   }
 })();
 </script>
+
+<!-- =====================================================================
+     STYLE 3 (Female) — scroll reveal (fade-up)
+     Self-contained and additive: only ADDS .s3-reveal / .s3-in classes
+     for the CSS transition above. Reads no site data, calls no existing
+     function, touches no existing DOM id. Remove this block and the site
+     still works with everything visible.
+     ===================================================================== */
+<script>
+(function(){
+  function s3Init(){
+    var layout = document.body.getAttribute('data-layout') || '1';
+    if(layout !== '4') return;
+    if(!('IntersectionObserver' in window)) return;
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var targets = document.querySelectorAll(
+      'section.who .who-photo, section.who .who-text,' +
+      'section.products .sec-head, section.products .prod-card,' +
+      'section.awards .awards-title, section.awards .badge,' +
+      'section.testi .sec-head, section.testi .t-card,' +
+      'section.cta-strip .cta-left, section.apply-cta-section .apply-cta-text,' +
+      'section.slides-section .sec-head, section.videos-section .sec-head'
+    );
+    if(!targets.length) return;
+
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        var el = entry.target;
+        var delay = parseInt(el.getAttribute('data-s3-delay') || '0', 10);
+        setTimeout(function(){ el.classList.add('s3-in'); }, delay);
+        obs.unobserve(el);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    Array.prototype.forEach.call(targets, function(el, i){
+      el.classList.add('s3-reveal');
+      el.setAttribute('data-s3-delay', String((i % 4) * 70));
+      obs.observe(el);
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', s3Init);
+  } else {
+    s3Init();
+  }
+  setTimeout(s3Init, 1800);
+})();
+</script>
+
+
+<!-- =====================================================================
+     STYLE 4 — scroll reveal (fade-up)
+     Fully self-contained and additive: it only ADDS the .s4-reveal /
+     .s4-in classes for the CSS transition above. It reads no site data,
+     calls no existing function, and touches no existing DOM id. Removing
+     this block leaves the site fully functional with everything visible.
+     ===================================================================== */
+<script>
+(function(){
+  var s4Layouts = ['5'];
+  function s4Init(){
+    var layout = document.body.getAttribute('data-layout') || '1';
+    if(s4Layouts.indexOf(layout) === -1) return;
+    if(!('IntersectionObserver' in window)) return;
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var targets = document.querySelectorAll(
+      'section.who .who-photo, section.who .who-text,' +
+      'section.products .sec-head, section.products .prod-card,' +
+      'section.awards .awards-title, section.awards .badge,' +
+      'section.testi .sec-head, section.testi .t-card,' +
+      'section.cta-strip .cta-left, section.apply-cta-section .apply-cta-text,' +
+      'section.slides-section .sec-head, section.videos-section .sec-head'
+    );
+    if(!targets.length) return;
+
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        var el = entry.target;
+        var delay = parseInt(el.getAttribute('data-s4-delay') || '0', 10);
+        setTimeout(function(){ el.classList.add('s4-in'); }, delay);
+        obs.unobserve(el);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    Array.prototype.forEach.call(targets, function(el, i){
+      el.classList.add('s4-reveal');
+      el.setAttribute('data-s4-delay', String((i % 4) * 70));
+      obs.observe(el);
+    });
+  }
+
+  // Run after initial paint, and again once remote content has had time to
+  // render new cards (testimonials/products load asynchronously).
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', s4Init);
+  } else {
+    s4Init();
+  }
+  setTimeout(s4Init, 1800);
+})();
+</script>
+
 
 </body>
 </html>
