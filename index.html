@@ -143,7 +143,6 @@
   }
   .watch:hover .play{background:rgba(255,255,255,.1);}
   .watch span{display:block; color:#B9C9CE; font-weight:500; font-size:11px; text-transform:none; letter-spacing:0; margin-top:2px;}
-  .hero-arc-line{display:none;}
   .hero-portrait{position:relative; text-align:center;}
   .portrait-frame{
     width:100%; max-width:380px; aspect-ratio:3/4; margin:0 auto; border-radius:6px;
@@ -241,7 +240,7 @@
   }
   .prod-card:hover{transform:translateY(-8px); box-shadow:0 26px 48px rgba(14,56,70,.24); border-color:var(--gold);}
   .prod-photo{
-    position:absolute; inset:0; background-size:contain; background-repeat:no-repeat; background-position:center;
+    position:absolute; inset:0; background-size:cover; background-position:center;
     display:flex; align-items:center; justify-content:center; color:rgba(246,205,110,.55);
     transition:transform .5s cubic-bezier(.2,.8,.2,1);
   }
@@ -476,7 +475,7 @@
   .foot-inner{display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;}
   .foot-brand{display:flex; align-items:center; gap:11px; color:var(--white); font-weight:700; font-size:17px;}
   .foot-contact{display:flex; gap:28px; font-size:12.5px; flex-wrap:wrap;}
-  .foot-contact span{display:flex; align-items:center; gap:8px;}
+  .foot-contact span, .foot-contact a{display:flex; align-items:center; gap:8px; color:inherit; text-decoration:none;}
   .socials{display:flex; gap:10px;}
   .socials a{
     width:34px; height:34px; border-radius:50%; border:1px solid rgba(246,205,110,.25);
@@ -624,13 +623,20 @@
     body[data-layout="2"] .who-text{order:1;}
     body[data-layout="2"] .who-photo{order:2; margin-top:24px;}
   }
+
+
+  /* ===================================================================
+     LAYOUTS 4, 5, 6 — Golden Grace, Executive Navy, Blush Prestige
+     =================================================================== */
+  .hero-arc-line{display:none;}
+
   /* =====================================================================
      STYLE 3 — "YELLOW ELEGANT FEMALE"  (matches approved reference)
      Cream-forward, bright, optimistic, premium. Navy structure, warm
      golden-yellow used strategically. Signature: a large arched portrait
      wrapped in a curved gold arc in the hero.
 
-     Scoped to layout 4 — its own dedicated slot in the Admin layout
+       Scoped to layout 4 — its own dedicated slot in the Admin layout
      picker ("Style 3 — Elegant Female"). Layouts 1/2/3 untouched.
      NO Sun Life logo/wordmark/identity anywhere.
      ===================================================================== */
@@ -641,15 +647,20 @@
     --cream:#FBF4E6; --paper:#FFFEFB; --ink:#16263A; --slate:#5E6B79; --line:#EBDFC5;
     background:var(--cream);
   }
+
   body[data-layout="4"] h1, body[data-layout="4"] h2, body[data-layout="4"] h3, body[data-layout="4"] .serif{
     font-weight:600; letter-spacing:-.01em;
   }
+
   body[data-layout="4"] .eyebrow{color:var(--gold-deep); font-weight:700; letter-spacing:.2em;}
+
   body[data-layout="4"] .btn{border-radius:8px; letter-spacing:.07em;}
+
   body[data-layout="4"] .btn-gold{
     background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 58%, var(--gold-deep) 100%);
     color:var(--navy-deep); box-shadow:0 12px 26px rgba(228,169,58,.32);
   }
+
   body[data-layout="4"] .btn-navy{background:var(--navy-deep); color:var(--gold-light); border:1px solid rgba(244,206,114,.3);}
 
   /* ---------- HEADER: clean premium navy, gold underline + gold CTA ---------- */
@@ -657,18 +668,28 @@
     background:rgba(12,32,51,.97); backdrop-filter:blur(14px);
     border-bottom:1px solid rgba(228,169,58,.22); box-shadow:none;
   }
+
   body[data-layout="4"] .nav-inner{padding:20px 32px;}
+
   body[data-layout="4"] .brand{color:#FFFFFF; gap:13px;}
+
   body[data-layout="4"] nav.links{color:#DCE6EF; gap:32px;}
+
   body[data-layout="4"] nav.links a{color:#DCE6EF; opacity:.82; letter-spacing:.07em;}
+
   body[data-layout="4"] nav.links a:hover{opacity:1; color:var(--gold-light);}
+
   body[data-layout="4"] nav.links a.active{opacity:1; color:#FFFFFF;}
+
   body[data-layout="4"] nav.links a.active::after{height:1.5px; background:var(--gold);}
+
   body[data-layout="4"] .menu-btn{color:var(--gold-light);}
+
   body[data-layout="4"] .nav-cta .btn{
     background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 58%, var(--gold-deep) 100%);
     color:var(--navy-deep); border:none; font-weight:700;
   }
+
   @media (max-width:960px){
     body[data-layout="4"] nav.links{
       background:var(--navy-deep); border-bottom:1px solid rgba(228,169,58,.22); box-shadow:0 18px 34px rgba(12,32,51,.4);
@@ -678,26 +699,39 @@
 
   /* ---------- HERO: CREAM editorial split + curved gold-arc portrait ---------- */
   body[data-layout="4"] .hero{background:var(--cream); color:var(--navy-deep); min-height:640px;}
+
   /* Neutralise the dark navy overlay so the hero reads cream; a light cream
      veil keeps text legible even if a bg photo happens to be set. */
   body[data-layout="4"] .hero-bg{background:var(--cream);}
+
   body[data-layout="4"] .hero-bg::after{
     background:linear-gradient(100deg, var(--cream) 0%, var(--cream) 48%, rgba(251,244,230,.82) 62%, rgba(251,244,230,.32) 80%, rgba(251,244,230,0) 100%);
   }
+
   body[data-layout="4"] .hero h1{color:var(--navy-deep); text-shadow:none; font-weight:600; font-size:47px; line-height:1.16;}
+
   body[data-layout="4"] .hero h1 .accent{color:var(--gold-deep); font-style:italic; font-weight:600;}
+
   body[data-layout="4"] .hero p.lede{color:var(--slate); position:relative; padding-top:26px;}
+
   body[data-layout="4"] .hero p.lede::before{content:""; position:absolute; top:0; left:0; width:58px; height:2px; background:var(--gold);}
+
   body[data-layout="4"] .pillar{color:var(--navy);}
+
   body[data-layout="4"] .pillar .picon{border-color:rgba(176,126,28,.4); background:rgba(228,169,58,.08); color:var(--gold-deep);}
+
   body[data-layout="4"] .watch{color:var(--navy-deep);}
+
   body[data-layout="4"] .watch .play{border-color:var(--gold); color:var(--navy-deep);}
+
   body[data-layout="4"] .watch .play svg{fill:var(--navy-deep);}
+
   body[data-layout="4"] .watch span{color:var(--slate);}
 
   /* Signature curved gold arc: a gold shape sits behind the arched photo,
      offset to the left/top so it reads as a gold crescent hugging it. */
   body[data-layout="4"] .hero-portrait{position:relative; width:100%; max-width:454px; margin:0 auto;}
+
   body[data-layout="4"] .hero-portrait::before{
     content:""; position:absolute; z-index:0;
     top:-12px; bottom:2px; left:-28px; right:12px;
@@ -705,13 +739,17 @@
     background:linear-gradient(155deg, var(--gold-light) 0%, var(--gold) 52%, var(--gold-deep) 100%);
     box-shadow:0 30px 60px rgba(176,126,28,.28);
   }
+
   body[data-layout="4"] .portrait-frame{
     position:relative; z-index:1; width:100%; max-width:100%; margin:0;
     aspect-ratio:4/5; border:none; border-radius:284px 284px 18px 18px;
     box-shadow:0 24px 52px rgba(9,22,38,.32);
   }
+
   body[data-layout="4"] .portrait-frame::before{display:none;}
+
   body[data-layout="4"] .photo-placeholder span{color:rgba(255,255,255,.85);}
+
   /* Advisor name/titles as a navy card overlapping the photo foot */
   body[data-layout="4"] .id-card{
     position:absolute; z-index:3; left:-6px; bottom:20px; margin-top:0;
@@ -719,10 +757,15 @@
     background:linear-gradient(120deg, rgba(12,32,51,.95), rgba(12,32,51,.82));
     border:1px solid rgba(228,169,58,.4); box-shadow:0 16px 34px rgba(9,22,38,.4);
   }
+
   body[data-layout="4"] .id-card h3{font-size:17px; color:#FFFFFF;}
+
   body[data-layout="4"] .id-card .rule{width:46px; margin:8px 0; background:var(--gold);}
+
   body[data-layout="4"] .id-card ul{font-size:11.5px; line-height:1.75;}
+
   body[data-layout="4"] .id-card .tagline{font-size:13px; margin-top:9px; color:var(--gold-light);}
+
   body[data-layout="4"] .hero-ctas{margin-top:6px;}
 
   /* Stat bar */
@@ -730,51 +773,72 @@
     border-radius:14px; border-color:rgba(228,169,58,.22);
     background:linear-gradient(160deg, var(--navy-deep), var(--navy));
   }
+
   body[data-layout="4"] .stat .sicon{border-color:var(--gold); color:var(--gold-light);}
 
   /* ---------- ABOUT: cream editorial, gold icons, divided feature row ---------- */
   body[data-layout="4"] section.who{padding:126px 0 110px; background:var(--cream);}
+
   body[data-layout="4"] .who-photo .frame{border-radius:16px; box-shadow:0 30px 58px rgba(9,22,38,.22);}
+
   body[data-layout="4"] .who-photo .frame::after{border-color:rgba(244,206,114,.5); inset:12px; border-radius:9px;}
+
   body[data-layout="4"] .dot-grid{opacity:.4;}
+
   body[data-layout="4"] .who h2{color:var(--navy-deep);}
+
   body[data-layout="4"] .values{margin-top:38px;}
+
   body[data-layout="4"] .value{
     border-top:none; border-left:1px solid var(--line); padding:4px 0 4px 22px;
   }
+
   body[data-layout="4"] .value:first-child{border-left:none; padding-left:0;}
+
   body[data-layout="4"] .value .vicon{color:var(--gold-deep);}
+
   body[data-layout="4"] .value h4{color:var(--navy-deep);}
 
   /* ---------- SOLUTIONS: flat white icon-cards, thin gold border, navy text --- */
   body[data-layout="4"] section.products{
     background:linear-gradient(180deg, var(--cream) 0%, #F6ECD6 100%);
   }
+
   body[data-layout="4"] .prod-grid{grid-template-columns:repeat(auto-fit, minmax(150px,1fr));}
+
   body[data-layout="4"] .prod-card{
     aspect-ratio:auto; background:var(--paper);
     border:1px solid rgba(228,169,58,.34); border-radius:14px;
     box-shadow:0 10px 24px rgba(21,48,76,.06);
     display:flex; flex-direction:column; overflow:hidden;
   }
+
   body[data-layout="4"] .prod-card:hover{
     border-color:var(--gold); transform:translateY(-6px); box-shadow:0 22px 40px rgba(21,48,76,.13);
   }
+
   body[data-layout="4"] .prod-photo{
     position:relative; inset:auto; aspect-ratio:3/4; margin-top:14px;
     color:var(--gold-deep); background-size:contain; background-repeat:no-repeat; background-position:center; transform:none !important;
   }
+
   body[data-layout="4"] .prod-card:hover .prod-photo{transform:none !important;}
+
   body[data-layout="4"] .prod-overlay{
     position:relative; inset:auto; padding:14px 16px 26px; background:none; text-align:center;
   }
+
   body[data-layout="4"] .prod-overlay h4{color:var(--navy-deep); text-shadow:none; font-size:14.5px; line-height:1.35;}
+
   body[data-layout="4"] .prod-cta{color:var(--gold-deep); justify-content:center; opacity:1; transform:none;}
+
   body[data-layout="4"] .prod-card::after{display:none;}
 
   /* ---------- MODAL / SLIDESHOW surfaces ---------- */
   body[data-layout="4"] .modal-card{border-radius:16px; border-color:rgba(228,169,58,.3);}
+
   body[data-layout="4"] .slideshow-frame{background:linear-gradient(160deg, var(--navy-mid), var(--navy));}
+
   body[data-layout="4"] .modal-photo{
     background-color:var(--navy); background-image:linear-gradient(160deg, var(--navy-mid), var(--navy));
     background-size:contain; background-position:center; background-repeat:no-repeat;
@@ -782,14 +846,20 @@
 
   /* ---------- TESTIMONIALS: editorial, large muted-gold quote ---------- */
   body[data-layout="4"] section.testi{background:var(--cream);}
+
   body[data-layout="4"] .t-card{
     background:var(--paper); border-radius:14px; border-color:var(--line);
     box-shadow:0 14px 32px rgba(21,48,76,.07);
   }
+
   body[data-layout="4"] .t-card .quote-mark{font-size:56px; color:var(--gold); opacity:.5;}
+
   body[data-layout="4"] .stars{color:var(--gold-deep);}
+
   body[data-layout="4"] .t-card p{font-size:15px; line-height:1.75;}
+
   body[data-layout="4"] .t-avatar{background:var(--navy-deep); border:1px solid var(--gold); color:var(--gold-light);}
+
   body[data-layout="4"] .t-person h5{color:var(--navy-deep);}
 
   /* ---------- AWARDS: luxury recognition gallery on cream ---------- */
@@ -797,15 +867,21 @@
     background:var(--cream); color:var(--ink);
     border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:84px 0;
   }
+
   body[data-layout="4"] section.awards .sun-deco circle,
   body[data-layout="4"] section.awards .sun-deco line{stroke:var(--gold);}
+
   body[data-layout="4"] section.awards .sun-deco{opacity:.14;}
+
   body[data-layout="4"] .awards-title h2{color:var(--navy-deep);}
+
   body[data-layout="4"] .badge{width:120px;}
+
   body[data-layout="4"] .badge .bicon{
     border:1px solid var(--gold); color:var(--gold-deep);
     background:var(--paper); box-shadow:0 12px 26px rgba(228,169,58,.14);
   }
+
   body[data-layout="4"] .badge span{color:var(--slate);}
 
   /* ---------- CTA: strong navy, warm gold button + soft sunburst glow ---------- */
@@ -814,36 +890,50 @@
     background:linear-gradient(105deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-mid) 100%);
     position:relative; overflow:hidden;
   }
+
   body[data-layout="4"] section.cta-strip{padding:56px 0;}
+
   body[data-layout="4"] section.cta-strip::after{
     content:""; position:absolute; right:-40px; bottom:-120px; width:340px; height:340px;
     border-radius:50%; pointer-events:none;
     background:radial-gradient(circle, rgba(244,206,114,.28) 0%, rgba(244,206,114,.08) 40%, transparent 70%);
   }
+
   body[data-layout="4"] section.cta-strip .cta-inner{position:relative; z-index:1;}
+
   body[data-layout="4"] section.cta-strip .cta-left h3,
   body[data-layout="4"] section.apply-final-cta h2{color:#FFFFFF;}
+
   body[data-layout="4"] section.cta-strip .cta-left p,
   body[data-layout="4"] section.apply-final-cta p{color:#C8D4DE;}
+
   body[data-layout="4"] section.cta-strip .cicon{background:var(--gold); color:var(--navy-deep);}
+
   body[data-layout="4"] #bottomCtaBtn, body[data-layout="4"] #applyMessengerBtn{
     background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 58%, var(--gold-deep) 100%);
     color:var(--navy-deep); border:none; font-weight:700;
   }
+
   body[data-layout="4"] .apply-cta-text .eyebrow{color:var(--gold-light);}
+
   body[data-layout="4"] .apply-full-hero{
     background:linear-gradient(115deg, var(--navy-deep) 0%, var(--navy) 50%, var(--navy-mid) 100%);
   }
+
   body[data-layout="4"] .apply-full-hero .apply-accent{color:var(--gold-light);}
+
   body[data-layout="4"] section.about-copy{background:var(--cream);}
 
   /* ---------- FOOTER: deep navy, gold icons + micro-details ---------- */
   body[data-layout="4"] footer{background:var(--navy-deep); border-top:1px solid rgba(228,169,58,.28); padding:38px 0;}
+
   body[data-layout="4"] .foot-contact span:not(:last-child)::after{
     content:""; display:inline-block; width:3px; height:3px; border-radius:50%;
     background:var(--gold); margin-left:28px; vertical-align:middle;
   }
+
   body[data-layout="4"] .socials a{border-color:rgba(228,169,58,.34); color:var(--gold-light);}
+
   body[data-layout="4"] .socials a:hover{border-color:var(--gold); background:rgba(228,169,58,.12);}
 
   /* ---------- PREMIUM MICRO-INTERACTIONS ---------- */
@@ -852,7 +942,9 @@
     transition:opacity .85s cubic-bezier(.2,.7,.2,1), transform .85s cubic-bezier(.2,.7,.2,1);
     will-change:opacity, transform;
   }
+
   body[data-layout="4"] .s3-reveal.s3-in{opacity:1; transform:none;}
+
   @media (prefers-reduced-motion: reduce){
     .s3-reveal{opacity:1 !important; transform:none !important; transition:none !important;}
     .btn:hover, .prod-card:hover, .badge:hover{transform:none !important;}
@@ -863,6 +955,7 @@
     body[data-layout="4"] .values{grid-template-columns:repeat(2,1fr); gap:20px 24px;}
     body[data-layout="4"] .value:nth-child(3){border-left:none; padding-left:0;}
   }
+
   @media (max-width:960px){
     body[data-layout="4"] .hero-copy{order:1;}
     body[data-layout="4"] .hero-portrait{order:2; margin-top:34px; max-width:400px;}
@@ -871,6 +964,7 @@
     body[data-layout="4"] .values{grid-template-columns:repeat(2,1fr); gap:24px;}
     body[data-layout="4"] .value{border-left:none; padding-left:0;}
   }
+
   @media (max-width:720px){
     body[data-layout="4"] .hero h1{font-size:33px;}
     body[data-layout="4"] section.who{padding:74px 0 62px;}
@@ -890,6 +984,7 @@
     body[data-layout="4"] .testi-grid::-webkit-scrollbar{display:none;}
     body[data-layout="4"] .testi-grid > *{flex:0 0 86%; scroll-snap-align:center;}
   }
+
   @media (max-width:480px){
     body[data-layout="4"] .prod-grid{grid-template-columns:1fr;}
   }
@@ -900,7 +995,7 @@
      champagne gold, heavy serif headlines. Gold is strategic (~10%),
      never a background field.
 
-     Scoped to layout 5 — its own dedicated slot in the Admin layout
+       Scoped to layout 5 — its own dedicated slot in the Admin layout
      picker ("Style 4 — Elegant Male"). Layouts 1/2/3 are declared
      earlier in this stylesheet and are deliberately left untouched.
      ===================================================================== */
@@ -909,20 +1004,25 @@
     --gold:#C9A227; --gold-deep:#8F6E17; --gold-light:#DEC06B;
     --cream:#FAF6EC; --paper:#FFFDF9; --ink:#101E2B; --slate:#5B6570; --line:#E4DCC6;
   }
+
   body[data-layout="5"] h1,
   body[data-layout="5"] h2,
   body[data-layout="5"] h3,
   body[data-layout="5"] .serif{
     font-weight:800; letter-spacing:-.015em;
   }
+
   body[data-layout="5"] .eyebrow{
     color:var(--gold-deep); font-weight:700; letter-spacing:.22em;
   }
+
   body[data-layout="5"] .btn{border-radius:2px; letter-spacing:.1em;}
+
   body[data-layout="5"] .btn-gold{
     background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 60%, var(--gold-deep) 100%);
     color:var(--navy-deep); box-shadow:0 10px 22px rgba(20,15,3,.26);
   }
+
   body[data-layout="5"] .btn-navy{
     border:1px solid rgba(222,192,107,.35);
   }
@@ -932,22 +1032,32 @@
     background:rgba(10,30,48,.94); backdrop-filter:blur(14px);
     border-bottom:1px solid rgba(201,162,39,.22); box-shadow:none;
   }
+
   body[data-layout="5"] .nav-inner{padding:22px 32px;}
+
   body[data-layout="5"] .brand{color:var(--white); gap:13px;}
+
   body[data-layout="5"] nav.links{color:#D6E0E8; gap:36px;}
+
   body[data-layout="5"] nav.links a{
     color:#D6E0E8; opacity:.78; letter-spacing:.1em;
   }
+
   body[data-layout="5"] nav.links a:hover{opacity:1; color:var(--gold-light);}
+
   body[data-layout="5"] nav.links a.active{opacity:1; color:var(--white);}
+
   body[data-layout="5"] nav.links a.active::after{
     height:1.5px; background:var(--gold);
   }
+
   body[data-layout="5"] .menu-btn{color:var(--gold-light);}
+
   body[data-layout="5"] .nav-cta .btn{
     background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 60%, var(--gold-deep) 100%);
     color:var(--navy-deep); border:none; font-weight:700;
   }
+
   @media (max-width:960px){
     body[data-layout="5"] nav.links{
       background:var(--navy-deep); border-bottom:1px solid rgba(201,162,39,.22); box-shadow:0 18px 34px rgba(3,10,17,.45);
@@ -961,73 +1071,98 @@
       linear-gradient(100deg, var(--navy-deep) 0%, rgba(10,30,48,.96) 32%, rgba(10,30,48,.60) 58%, rgba(19,44,66,.26) 78%, rgba(19,44,66,.14) 100%),
       linear-gradient(0deg, rgba(10,30,48,.6) 0%, transparent 30%);
   }
+
   body[data-layout="5"] .hero-inner{position:relative;}
+
   body[data-layout="5"] .hero h1{font-size:47px; line-height:1.11; font-weight:800;}
+
   body[data-layout="5"] .hero h1 .accent{
     font-style:normal; font-weight:700; color:var(--gold-light);
   }
+
   body[data-layout="5"] .hero-arc-line{
     display:block; position:absolute; left:52%; top:-8%; width:150px; height:116%;
     transform:translateX(-50%); z-index:1; pointer-events:none;
   }
+
   body[data-layout="5"] .hero-arc-line path{
     stroke-dasharray:1400; stroke-dashoffset:1400;
     animation:arcDraw4 2.4s cubic-bezier(.5,.05,.2,1) .35s forwards;
   }
+
   @keyframes arcDraw4{ to{ stroke-dashoffset:0; } }
+
   body[data-layout="5"] .portrait-frame{
     border-radius:2px; border:1px solid rgba(222,192,107,.5);
     box-shadow:0 34px 68px rgba(3,10,17,.52); max-width:400px;
   }
+
   body[data-layout="5"] .portrait-frame::before{
     inset:12px; border-color:rgba(222,192,107,.32);
   }
+
   body[data-layout="5"] .tagline{font-style:normal; font-weight:700;}
+
   body[data-layout="5"] .pillar .picon{
     border-color:rgba(222,192,107,.42); background:rgba(222,192,107,.05);
   }
+
   body[data-layout="5"] .stat-inner{
     border-radius:2px; border-color:rgba(222,192,107,.2);
   }
 
   /* ---------- ABOUT: editorial portrait, thin gold dividers, white space ---------- */
   body[data-layout="5"] section.who{padding:134px 0 116px;}
+
   body[data-layout="5"] .who-photo .frame{
     border-radius:2px; box-shadow:0 32px 62px rgba(3,10,17,.32);
   }
+
   body[data-layout="5"] .who-photo .frame::after{
     border-color:rgba(222,192,107,.42);
   }
+
   body[data-layout="5"] .dot-grid{opacity:.34;}
+
   body[data-layout="5"] .value{border-top:1px solid rgba(201,162,39,.45);}
+
   body[data-layout="5"] .value .vicon{color:var(--gold-deep);}
 
   /* ---------- SOLUTIONS: deep navy field, premium dark cards ---------- */
   body[data-layout="5"] section.products{
     background:linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);
   }
+
   body[data-layout="5"] section.products .sec-head .eyebrow{color:var(--gold-light);}
+
   body[data-layout="5"] section.products .sec-head h2{color:var(--white);}
+
   body[data-layout="5"] .prod-card{
     background:linear-gradient(160deg, var(--navy-mid) 0%, var(--navy) 100%);
     border:1px solid rgba(222,192,107,.16); border-radius:3px;
     box-shadow:0 10px 24px rgba(3,10,17,.34);
   }
+
   body[data-layout="5"] .prod-card:hover{
     border-color:var(--gold); transform:translateY(-6px); box-shadow:0 22px 44px rgba(3,10,17,.5);
   }
+
   body[data-layout="5"] .prod-photo{color:rgba(222,192,107,.62);}
+
   body[data-layout="5"] .prod-overlay{
     background:linear-gradient(180deg, transparent 0%, rgba(10,30,48,.1) 30%, rgba(10,30,48,.94) 100%);
   }
+
   body[data-layout="5"] .prod-cta{color:var(--gold-light);}
 
   /* ---------- MODAL / SLIDESHOW surfaces ---------- */
   body[data-layout="5"] .slideshow-frame{background:linear-gradient(160deg, var(--navy-mid), var(--navy));}
+
   body[data-layout="5"] .modal-photo{
     background-color:var(--navy); background-image:linear-gradient(160deg, var(--navy-mid), var(--navy));
     background-size:contain; background-position:center; background-repeat:no-repeat;
   }
+
   body[data-layout="5"] .modal-card{
     border-radius:3px; border-color:rgba(222,192,107,.28);
   }
@@ -1038,25 +1173,34 @@
     border-top:1px solid var(--line); border-bottom:1px solid var(--line);
     padding:82px 0;
   }
+
   body[data-layout="5"] section.awards .sun-deco circle,
   body[data-layout="5"] section.awards .sun-deco line{stroke:var(--gold-deep);}
+
   body[data-layout="5"] section.awards .sun-deco{opacity:.13;}
+
   body[data-layout="5"] .awards-title h2{color:var(--navy-deep);}
+
   body[data-layout="5"] .badge .bicon{
     border:1px solid var(--gold-deep); color:var(--gold-deep);
     background:var(--paper); box-shadow:0 10px 24px rgba(20,15,3,.09);
   }
+
   body[data-layout="5"] .badge span{color:var(--slate);}
 
   /* ---------- TESTIMONIALS: editorial quote treatment ---------- */
   body[data-layout="5"] .t-card{
     border-radius:2px; border-color:var(--line); box-shadow:0 14px 32px rgba(10,30,48,.06);
   }
+
   body[data-layout="5"] .t-card .quote-mark{
     font-size:54px; color:var(--gold-deep); opacity:.85;
   }
+
   body[data-layout="5"] .stars{color:var(--gold-deep);}
+
   body[data-layout="5"] .t-card p{font-size:15.5px; line-height:1.75;}
+
   body[data-layout="5"] .t-avatar{
     background:var(--navy-deep); border:1px solid var(--gold); color:var(--gold-light);
   }
@@ -1066,23 +1210,31 @@
   body[data-layout="5"] section.apply-final-cta{
     background:linear-gradient(100deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-mid) 100%);
   }
+
   body[data-layout="5"] section.cta-strip{padding:58px 0;}
+
   body[data-layout="5"] section.cta-strip .cta-left h3,
   body[data-layout="5"] section.apply-final-cta h2{color:var(--white);}
+
   body[data-layout="5"] section.cta-strip .cta-left p,
   body[data-layout="5"] section.apply-final-cta p{color:#C2CFD9;}
+
   body[data-layout="5"] section.cta-strip .cicon{
     background:var(--gold); color:var(--navy-deep);
   }
+
   body[data-layout="5"] #bottomCtaBtn,
   body[data-layout="5"] #applyMessengerBtn{
     background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 60%, var(--gold-deep) 100%);
     color:var(--navy-deep); border:none; font-weight:700;
   }
+
   body[data-layout="5"] .apply-cta-text .eyebrow{color:var(--gold-light);}
+
   body[data-layout="5"] .apply-full-hero{
     background:linear-gradient(115deg, var(--navy-deep) 0%, var(--navy) 50%, var(--navy-mid) 100%);
   }
+
   body[data-layout="5"] .apply-full-hero .apply-accent{
     font-style:normal; font-weight:700;
   }
@@ -1091,11 +1243,14 @@
   body[data-layout="5"] footer{
     border-top:1px solid rgba(201,162,39,.28); padding:38px 0;
   }
+
   body[data-layout="5"] .foot-contact span:not(:last-child)::after{
     content:""; display:inline-block; width:3px; height:3px; border-radius:50%;
     background:var(--gold-deep); margin-left:28px; vertical-align:middle;
   }
+
   body[data-layout="5"] .socials a{border-color:rgba(201,162,39,.32);}
+
   body[data-layout="5"] .socials a:hover{
     border-color:var(--gold); background:rgba(201,162,39,.1);
   }
@@ -1106,9 +1261,11 @@
     transition:opacity .85s cubic-bezier(.2,.7,.2,1), transform .85s cubic-bezier(.2,.7,.2,1);
     will-change:opacity, transform;
   }
+
   body[data-layout="5"] .s4-reveal.s4-in{
     opacity:1; transform:none;
   }
+
   @media (prefers-reduced-motion: reduce){
     .s4-reveal{opacity:1 !important; transform:none !important; transition:none !important;}
     .hero-arc-line path{animation:none !important; stroke-dashoffset:0 !important;}
@@ -1121,21 +1278,23 @@
     body[data-layout="5"] .prod-grid{grid-template-columns:repeat(3,1fr);}
     body[data-layout="5"] .values{grid-template-columns:repeat(2,1fr);}
   }
+
   @media (max-width:960px){
     body[data-layout="5"] .hero-arc-line{display:none;}
     /* Mobile: hero text first, photo second */
     body[data-layout="5"] .hero-copy{order:1;}
     body[data-layout="5"] .hero-portrait{order:2; margin-top:30px;}
   }
+
   @media (max-width:720px){
     body[data-layout="5"] .hero h1{font-size:33px;}
     body[data-layout="5"] section.who{padding:76px 0 64px;}
 
-    /* Solutions become vertical cards */
+      /* Solutions become vertical cards */
     body[data-layout="5"] .prod-grid{grid-template-columns:1fr; gap:16px;}
     body[data-layout="5"] .prod-card{aspect-ratio:16/10;}
 
-    /* Awards become a horizontal scroll rail */
+      /* Awards become a horizontal scroll rail */
     body[data-layout="5"] .badges{
       flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x mandatory;
       gap:24px; padding-bottom:12px; width:100%;
@@ -1144,7 +1303,7 @@
     body[data-layout="5"] .badges::-webkit-scrollbar{display:none;}
     body[data-layout="5"] .badge{flex:0 0 auto; scroll-snap-align:center;}
 
-    /* Testimonials become one slide at a time */
+      /* Testimonials become one slide at a time */
     body[data-layout="5"] .testi-grid{
       display:flex; overflow-x:auto; scroll-snap-type:x mandatory;
       gap:16px; padding-bottom:14px;
@@ -1165,7 +1324,7 @@
      single soft blush panel offset behind it at a slight angle —
      architectural, not decorative. No hearts, no flowers, no circles.
 
-     Scoped to layout 6 — its own dedicated slot in the Admin layout
+       Scoped to layout 6 — its own dedicated slot in the Admin layout
      picker ("Style 2 — Elegant Feminine"). Layouts 1-5 untouched.
      ===================================================================== */
   body[data-layout="6"]{
@@ -1175,15 +1334,20 @@
     --cream:#FBF7F1; --paper:#FFFFFF; --ink:#22262E; --slate:#5C6570; --line:#EFE4DE;
     background:var(--cream);
   }
+
   body[data-layout="6"] h1, body[data-layout="6"] h2, body[data-layout="6"] h3, body[data-layout="6"] .serif{
     font-weight:600; letter-spacing:-.01em;
   }
+
   body[data-layout="6"] .eyebrow{color:var(--rose-deep); font-weight:700; letter-spacing:.2em;}
+
   body[data-layout="6"] .btn{border-radius:7px; letter-spacing:.07em;}
+
   body[data-layout="6"] .btn-gold{
     background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 58%, var(--gold-deep) 100%);
     color:var(--navy-deep); box-shadow:0 12px 24px rgba(203,161,53,.3);
   }
+
   body[data-layout="6"] .btn-navy{background:var(--navy-deep); color:var(--gold-light); border:1px solid rgba(227,197,103,.3);}
 
   /* ---------- HEADER: elegant white/ivory, gold underline, blush hover ---------- */
@@ -1191,18 +1355,28 @@
     background:rgba(255,255,255,.95); backdrop-filter:blur(14px);
     border-bottom:1px solid var(--line); box-shadow:none;
   }
+
   body[data-layout="6"] .nav-inner{padding:22px 32px;}
+
   body[data-layout="6"] .brand{color:var(--navy-deep); gap:13px;}
+
   body[data-layout="6"] nav.links{color:var(--navy); gap:34px;}
+
   body[data-layout="6"] nav.links a{color:var(--navy); opacity:.72; letter-spacing:.07em;}
+
   body[data-layout="6"] nav.links a:hover{opacity:1; color:var(--rose-deep);}
+
   body[data-layout="6"] nav.links a.active{opacity:1; color:var(--navy-deep);}
+
   body[data-layout="6"] nav.links a.active::after{height:1.5px; background:var(--gold);}
+
   body[data-layout="6"] .menu-btn{color:var(--navy-deep);}
+
   body[data-layout="6"] .nav-cta .btn{
     background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 58%, var(--gold-deep) 100%);
     color:var(--navy-deep); border:none; font-weight:700;
   }
+
   @media (max-width:960px){
     body[data-layout="6"] nav.links{
       background:#FFFFFF; border-bottom:1px solid var(--line); box-shadow:0 18px 34px rgba(22,40,63,.1);
@@ -1212,95 +1386,138 @@
 
   /* ---------- HERO: ivory editorial split + architectural blush/gold frame ---------- */
   body[data-layout="6"] .hero{background:var(--cream); color:var(--navy-deep); min-height:640px;}
+
   body[data-layout="6"] .hero-bg{background:var(--cream);}
+
   body[data-layout="6"] .hero-bg::after{
     background:linear-gradient(100deg, var(--cream) 0%, var(--cream) 46%, rgba(251,247,241,.8) 62%, rgba(251,247,241,.3) 80%, rgba(251,247,241,0) 100%);
   }
+
   body[data-layout="6"] .hero h1{color:var(--navy-deep); text-shadow:none; font-weight:600; font-size:46px; line-height:1.17;}
+
   body[data-layout="6"] .hero h1 .accent{color:var(--rose-deep); font-style:italic; font-weight:600;}
+
   body[data-layout="6"] .hero p.lede{color:var(--slate); position:relative; padding-top:26px;}
+
   body[data-layout="6"] .hero p.lede::before{content:""; position:absolute; top:0; left:0; width:56px; height:2px; background:var(--gold);}
+
   body[data-layout="6"] .pillar{color:var(--navy);}
+
   body[data-layout="6"] .pillar .picon{border-color:rgba(156,123,34,.35); background:rgba(203,161,53,.06); color:var(--gold-deep);}
+
   body[data-layout="6"] .watch{color:var(--navy-deep);}
+
   body[data-layout="6"] .watch .play{border-color:var(--gold); color:var(--navy-deep);}
+
   body[data-layout="6"] .watch .play svg{fill:var(--navy-deep);}
+
   body[data-layout="6"] .watch span{color:var(--slate);}
 
   /* Signature: thin gold outline frame + offset blush panel behind, rotated
      slightly for an architectural (not decorative) feel. No solid arc, no
      heavy fill — restrained, editorial. */
   body[data-layout="6"] .hero-portrait{position:relative; width:100%; max-width:440px; margin:0 auto;}
+
   body[data-layout="6"] .hero-portrait::before{
     content:""; position:absolute; z-index:0;
     top:22px; bottom:-18px; left:-26px; right:26px;
     background:var(--blush); border-radius:10px;
     transform:rotate(-2.5deg);
   }
+
   body[data-layout="6"] .portrait-frame{
     position:relative; z-index:1; width:100%; max-width:100%; margin:0;
     aspect-ratio:4/5; border-radius:6px;
     border:1.5px solid var(--gold);
     box-shadow:0 26px 52px rgba(22,40,63,.24);
   }
+
   body[data-layout="6"] .portrait-frame::before{
     content:""; position:absolute; inset:10px; border:1px solid rgba(203,161,53,.4);
     border-radius:3px; pointer-events:none;
   }
+
   body[data-layout="6"] .photo-placeholder span{color:rgba(255,255,255,.85);}
+
   body[data-layout="6"] .id-card{
     position:absolute; z-index:3; left:-6px; bottom:18px; margin-top:0;
     text-align:left; padding:15px 20px; border-radius:8px; backdrop-filter:blur(3px);
     background:linear-gradient(120deg, rgba(13,27,44,.95), rgba(13,27,44,.82));
     border:1px solid rgba(227,197,103,.35); box-shadow:0 16px 32px rgba(13,27,44,.36);
   }
+
   body[data-layout="6"] .id-card h3{font-size:17px; color:#FFFFFF;}
+
   body[data-layout="6"] .id-card .rule{width:44px; margin:8px 0; background:var(--gold);}
+
   body[data-layout="6"] .id-card ul{font-size:11.5px; line-height:1.75;}
+
   body[data-layout="6"] .id-card .tagline{font-size:13px; margin-top:9px; color:var(--rose)}
+
   body[data-layout="6"] .stat-inner{
     border-radius:10px; border-color:rgba(203,161,53,.2);
     background:linear-gradient(160deg, var(--navy-deep), var(--navy));
   }
+
   body[data-layout="6"] .stat .sicon{border-color:var(--gold); color:var(--gold-light);}
 
   /* ---------- ABOUT: editorial two-column, thin-line gold icons, blush separators ---------- */
   body[data-layout="6"] section.who{padding:124px 0 108px; background:var(--cream);}
+
   body[data-layout="6"] .who-photo .frame{border-radius:6px; box-shadow:0 28px 54px rgba(22,40,63,.2);}
+
   body[data-layout="6"] .who-photo .frame::after{border-color:rgba(203,161,53,.4); inset:11px; border-radius:2px;}
+
   body[data-layout="6"] .dot-grid{opacity:.35;}
+
   body[data-layout="6"] .who h2{color:var(--navy-deep);}
+
   body[data-layout="6"] .values{margin-top:38px;}
+
   body[data-layout="6"] .value{border-top:none; border-left:1px solid var(--blush-deep); padding:4px 0 4px 22px;}
+
   body[data-layout="6"] .value:first-child{border-left:none; padding-left:0;}
+
   body[data-layout="6"] .value .vicon{color:var(--gold-deep);}
+
   body[data-layout="6"] .value h4{color:var(--navy-deep);}
 
   /* ---------- SOLUTIONS: ivory editorial cards, subtle blush border, gold icon ---------- */
   body[data-layout="6"] section.products{background:linear-gradient(180deg, var(--cream) 0%, #F7EDE9 100%);}
+
   body[data-layout="6"] .prod-grid{grid-template-columns:repeat(auto-fit, minmax(150px,1fr));}
+
   body[data-layout="6"] .prod-card{
     aspect-ratio:auto; background:var(--paper);
     border:1px solid var(--blush-deep); border-radius:10px;
     box-shadow:0 8px 20px rgba(22,40,63,.05);
     display:flex; flex-direction:column; overflow:hidden;
   }
+
   body[data-layout="6"] .prod-card:hover{
     border-color:var(--gold); transform:translateY(-5px); box-shadow:0 18px 34px rgba(22,40,63,.11);
   }
+
   body[data-layout="6"] .prod-photo{
     position:relative; inset:auto; aspect-ratio:3/4; margin-top:14px;
     color:var(--gold-deep); background-size:contain; background-repeat:no-repeat; background-position:center; transform:none !important;
   }
+
   body[data-layout="6"] .prod-card:hover .prod-photo{transform:none !important;}
+
   body[data-layout="6"] .prod-overlay{position:relative; inset:auto; padding:14px 16px 24px; background:none; text-align:center;}
+
   body[data-layout="6"] .prod-overlay h4{color:var(--navy-deep); text-shadow:none; font-size:14px; line-height:1.35;}
+
   body[data-layout="6"] .prod-cta{color:var(--rose-deep); justify-content:center; opacity:1; transform:none;}
+
   body[data-layout="6"] .prod-card::after{display:none;}
 
   /* ---------- MODAL / SLIDESHOW surfaces ---------- */
   body[data-layout="6"] .modal-card{border-radius:10px; border-color:rgba(203,161,53,.28);}
+
   body[data-layout="6"] .slideshow-frame{background:linear-gradient(160deg, var(--navy-mid), var(--navy));}
+
   body[data-layout="6"] .modal-photo{
     background-color:var(--navy); background-image:linear-gradient(160deg, var(--navy-mid), var(--navy));
     background-size:contain; background-position:center; background-repeat:no-repeat;
@@ -1308,14 +1525,20 @@
 
   /* ---------- TESTIMONIALS: soft editorial, large muted-gold quote, blush accents ---------- */
   body[data-layout="6"] section.testi{background:var(--cream);}
+
   body[data-layout="6"] .t-card{
     background:var(--paper); border-radius:10px; border-color:var(--line);
     box-shadow:0 12px 28px rgba(22,40,63,.06);
   }
+
   body[data-layout="6"] .t-card .quote-mark{font-size:52px; color:var(--gold); opacity:.55;}
+
   body[data-layout="6"] .stars{color:var(--gold-deep);}
+
   body[data-layout="6"] .t-card p{font-size:15px; line-height:1.75;}
+
   body[data-layout="6"] .t-avatar{background:var(--navy-deep); border:1px solid var(--blush-deep); color:var(--blush);}
+
   body[data-layout="6"] .t-person h5{color:var(--navy-deep);}
 
   /* ---------- AWARDS: elegant cream recognition, subtle gold frames ---------- */
@@ -1323,14 +1546,19 @@
     background:var(--cream); color:var(--ink);
     border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:82px 0;
   }
+
   body[data-layout="6"] section.awards .sun-deco circle,
   body[data-layout="6"] section.awards .sun-deco line{stroke:var(--gold);}
+
   body[data-layout="6"] section.awards .sun-deco{opacity:.12;}
+
   body[data-layout="6"] .awards-title h2{color:var(--navy-deep);}
+
   body[data-layout="6"] .badge .bicon{
     border:1px solid var(--gold); color:var(--gold-deep);
     background:var(--paper); box-shadow:0 10px 22px rgba(203,161,53,.12);
   }
+
   body[data-layout="6"] .badge span{color:var(--slate);}
 
   /* ---------- CTA: private-invitation navy, gold button, soft blush glow ---------- */
@@ -1339,36 +1567,50 @@
     background:linear-gradient(105deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-mid) 100%);
     position:relative; overflow:hidden;
   }
+
   body[data-layout="6"] section.cta-strip{padding:56px 0;}
+
   body[data-layout="6"] section.cta-strip::after{
     content:""; position:absolute; right:-50px; bottom:-130px; width:340px; height:340px;
     border-radius:50%; pointer-events:none;
     background:radial-gradient(circle, rgba(244,222,225,.16) 0%, rgba(203,161,53,.1) 42%, transparent 72%);
   }
+
   body[data-layout="6"] section.cta-strip .cta-inner{position:relative; z-index:1;}
+
   body[data-layout="6"] section.cta-strip .cta-left h3,
   body[data-layout="6"] section.apply-final-cta h2{color:#FFFFFF;}
+
   body[data-layout="6"] section.cta-strip .cta-left p,
   body[data-layout="6"] section.apply-final-cta p{color:#C9CFDA;}
+
   body[data-layout="6"] section.cta-strip .cicon{background:var(--gold); color:var(--navy-deep);}
+
   body[data-layout="6"] #bottomCtaBtn, body[data-layout="6"] #applyMessengerBtn{
     background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 58%, var(--gold-deep) 100%);
     color:var(--navy-deep); border:none; font-weight:700;
   }
+
   body[data-layout="6"] .apply-cta-text .eyebrow{color:var(--gold-light);}
+
   body[data-layout="6"] .apply-full-hero{
     background:linear-gradient(115deg, var(--navy-deep) 0%, var(--navy) 50%, var(--navy-mid) 100%);
   }
+
   body[data-layout="6"] .apply-full-hero .apply-accent{color:var(--rose);}
+
   body[data-layout="6"] section.about-copy{background:var(--cream);}
 
   /* ---------- FOOTER: navy, ivory text, blush + gold micro-details ---------- */
   body[data-layout="6"] footer{background:var(--navy-deep); border-top:1px solid rgba(203,161,53,.26); padding:38px 0;}
+
   body[data-layout="6"] .foot-contact span:not(:last-child)::after{
     content:""; display:inline-block; width:3px; height:3px; border-radius:50%;
     background:var(--gold); margin-left:28px; vertical-align:middle;
   }
+
   body[data-layout="6"] .socials a{border-color:rgba(203,161,53,.3); color:var(--blush);}
+
   body[data-layout="6"] .socials a:hover{border-color:var(--gold); background:rgba(203,161,53,.1);}
 
   /* ---------- PREMIUM MICRO-INTERACTIONS: fade-up on scroll ---------- */
@@ -1377,7 +1619,9 @@
     transition:opacity .85s cubic-bezier(.2,.7,.2,1), transform .85s cubic-bezier(.2,.7,.2,1);
     will-change:opacity, transform;
   }
+
   body[data-layout="6"] .s6-reveal.s6-in{opacity:1; transform:none;}
+
   @media (prefers-reduced-motion: reduce){
     .s6-reveal{opacity:1 !important; transform:none !important; transition:none !important;}
     .btn:hover, .prod-card:hover, .badge:hover{transform:none !important;}
@@ -1388,6 +1632,7 @@
     body[data-layout="6"] .values{grid-template-columns:repeat(2,1fr); gap:20px 24px;}
     body[data-layout="6"] .value:nth-child(3){border-left:none; padding-left:0;}
   }
+
   @media (max-width:960px){
     /* Hero: TEXT -> IMAGE */
     body[data-layout="6"] .hero-copy{order:1;}
@@ -1396,6 +1641,7 @@
     body[data-layout="6"] .values{grid-template-columns:repeat(2,1fr); gap:22px;}
     body[data-layout="6"] .value{border-left:none; padding-left:0;}
   }
+
   @media (max-width:720px){
     body[data-layout="6"] .hero h1{font-size:32px;}
     body[data-layout="6"] section.who{padding:72px 0 60px;}
@@ -1411,6 +1657,7 @@
     body[data-layout="6"] .testi-grid::-webkit-scrollbar{display:none;}
     body[data-layout="6"] .testi-grid > *{flex:0 0 86%; scroll-snap-align:center;}
   }
+
   @media (max-width:480px){
     body[data-layout="6"] .prod-grid{grid-template-columns:1fr;}
   }
@@ -1790,8 +2037,8 @@
       <svg width="28" height="28" viewBox="0 0 40 40"><circle cx="20" cy="20" r="9" fill="#ECAB23"/><g stroke="#ECAB23" stroke-width="2" stroke-linecap="round"><line x1="20" y1="2" x2="20" y2="7"/><line x1="20" y1="33" x2="20" y2="38"/><line x1="2" y1="20" x2="7" y2="20"/><line x1="33" y1="20" x2="38" y2="20"/><line x1="7" y1="7" x2="10.5" y2="10.5"/><line x1="29.5" y1="29.5" x2="33" y2="33"/><line x1="33" y1="7" x2="29.5" y2="10.5"/><line x1="10.5" y1="29.5" x2="7" y2="33"/></g></svg>
     </a>
     <div class="foot-contact">
-      <span id="footPhone">0900 000 0000</span>
-      <span id="footEmail">info@yourcompany.com</span>
+      <a href="tel:0900 000 0000" id="footPhone">0900 000 0000</a>
+      <a href="mailto:info@yourcompany.com" id="footEmail">info@yourcompany.com</a>
       <span id="footLocation">Philippines</span>
     </div>
     <div class="socials">
@@ -1809,6 +2056,113 @@ var SITE_CONFIG = {
   scriptUrl: (typeof SCRIPT_URL !== 'undefined') ? SCRIPT_URL : '',
   messengerLink: ''
 };
+
+// =====================================================================
+// CLICK TRACKING — records visitor actions (CTA clicks, form submits,
+// etc.) into the "ClickTracking" tab of the same Google Sheet. Runs in
+// the background via sendBeacon and never blocks or interferes with the
+// visitor's actual click/navigation.
+// =====================================================================
+
+// ----- Anonymous session ID, persisted per browser tab session -----
+function getTrackingSessionId_(){
+  try {
+    var existing = sessionStorage.getItem('jccTrackSessionId');
+    if(existing) return existing;
+    var fresh = 'sess_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 10);
+    sessionStorage.setItem('jccTrackSessionId', fresh);
+    return fresh;
+  } catch(e){
+    return 'sess_nostorage'; // private browsing / storage disabled — tracking still works, just ungrouped
+  }
+}
+
+// ----- Lightweight device/browser/OS detection from the user agent -----
+function detectDevice_(){
+  var ua = navigator.userAgent || '';
+  if(/iPad|Tablet(?!.*Mobile)/i.test(ua)) return 'Tablet';
+  if(/Mobi|Android.*Mobile|iPhone/i.test(ua)) return 'Mobile';
+  return 'Desktop';
+}
+function detectBrowser_(){
+  var ua = navigator.userAgent || '';
+  if(/Edg\//.test(ua)) return 'Edge';
+  if(/Chrome\//.test(ua) && !/Chromium/.test(ua)) return 'Chrome';
+  if(/Safari\//.test(ua) && !/Chrome/.test(ua)) return 'Safari';
+  if(/Firefox\//.test(ua)) return 'Firefox';
+  return 'Other';
+}
+function detectOS_(){
+  var ua = navigator.userAgent || '';
+  if(/Windows/.test(ua)) return 'Windows';
+  if(/Mac OS X/.test(ua) && !/iPhone|iPad/.test(ua)) return 'macOS';
+  if(/Android/.test(ua)) return 'Android';
+  if(/iPhone|iPad|iPod/.test(ua)) return 'iOS';
+  if(/Linux/.test(ua)) return 'Linux';
+  return 'Other';
+}
+
+// ----- UTM params captured once from the landing URL -----
+function getUtmParams_(){
+  try {
+    var params = new URLSearchParams(window.location.search);
+    return {
+      source: params.get('utm_source') || '',
+      medium: params.get('utm_medium') || '',
+      campaign: params.get('utm_campaign') || ''
+    };
+  } catch(e){
+    return { source: '', medium: '', campaign: '' };
+  }
+}
+var TRACKING_UTM = getUtmParams_();
+var TRACKING_SESSION_ID = getTrackingSessionId_();
+
+// ----- The core tracking call — fire-and-forget, never blocks the click -----
+function trackEvent(eventName, elementLabel){
+  if(!SITE_CONFIG.scriptUrl || SITE_CONFIG.scriptUrl.indexOf('https://script.google.com') !== 0) return;
+
+  var payload = JSON.stringify({
+    action: 'trackEvent',
+    data: {
+      event: eventName,
+      element: elementLabel || '',
+      page: (document.title || '').replace(' | Financial Advisor', ''),
+      url: window.location.href,
+      device: detectDevice_(),
+      browser: detectBrowser_(),
+      os: detectOS_(),
+      referrer: document.referrer || '',
+      utmSource: TRACKING_UTM.source,
+      utmMedium: TRACKING_UTM.medium,
+      utmCampaign: TRACKING_UTM.campaign,
+      sessionId: TRACKING_SESSION_ID
+    }
+  });
+
+  try {
+    if(navigator.sendBeacon){
+      // sendBeacon queues the request and returns instantly — the browser
+      // delivers it in the background even if the visitor immediately
+      // navigates away (e.g. to Messenger or a tel: link), which is
+      // exactly the case that matters most for click tracking.
+      var blob = new Blob([payload], { type: 'text/plain;charset=UTF-8' });
+      var sent = navigator.sendBeacon(SITE_CONFIG.scriptUrl, blob);
+      if(sent) return;
+    }
+  } catch(e){ /* fall through to fetch below */ }
+
+  // Fallback for the rare browser without sendBeacon support — keepalive
+  // lets this request complete even if the page is already navigating away.
+  try {
+    fetch(SITE_CONFIG.scriptUrl, {
+      method: 'POST',
+      headers: {'Content-Type': 'text/plain;charset=utf-8'},
+      body: payload,
+      keepalive: true
+    }).catch(function(){ /* tracking failures are silent by design */ });
+  } catch(e){ /* never let a tracking error affect the visitor's action */ }
+}
 
 
 // ===== Who I Am photo slideshow (auto-advance every 3s, fades, manual arrows) =====
@@ -2133,6 +2487,7 @@ function submitFeedbackForm(event){
     if(res.success){
       document.getElementById('feedbackMainView').style.display = 'none';
       document.getElementById('feedbackSuccess').classList.add('active');
+      trackEvent('FORM_SUBMIT', 'Feedback Form');
     } else {
       status.textContent = 'Something went wrong: ' + (res.error || 'please try again.');
       status.className = 'lead-status err';
@@ -2196,6 +2551,45 @@ document.addEventListener('DOMContentLoaded', function(){
       }
     });
   }
+
+  // ===== Click tracking wiring =====
+  trackEvent('PAGE_VIEW', document.title);
+
+  var ctaButtons = [
+    { id: 'topCtaBtn', label: 'Book a Consultation — Top Nav' },
+    { id: 'heroCtaBtn', label: 'Book a Free Consultation — Hero' },
+    { id: 'bottomCtaBtn', label: 'Book a Free Consultation — Bottom' }
+  ];
+  ctaButtons.forEach(function(cta){
+    var el = document.getElementById(cta.id);
+    if(el) el.addEventListener('click', function(){ trackEvent('CTA_CLICK', cta.label); });
+  });
+
+  var applyMsgrBtn = document.getElementById('applyMessengerBtn');
+  if(applyMsgrBtn) applyMsgrBtn.addEventListener('click', function(){ trackEvent('MESSENGER_CLICK', 'Apply via Messenger'); });
+
+  var learnMoreBtn = document.querySelector('.apply-cta-section a.btn');
+  if(learnMoreBtn) learnMoreBtn.addEventListener('click', function(){ trackEvent('CTA_CLICK', 'Learn More & Apply'); });
+
+  var footPhoneLink = document.getElementById('footPhone');
+  if(footPhoneLink) footPhoneLink.addEventListener('click', function(){ trackEvent('PHONE_CLICK', footPhoneLink.textContent); });
+
+  var footEmailLink = document.getElementById('footEmail');
+  if(footEmailLink) footEmailLink.addEventListener('click', function(){ trackEvent('EMAIL_CLICK', footEmailLink.textContent); });
+
+  // FORM_START fires once per form, on the visitor's first interaction with it
+  function trackFormStartOnce(formId, label){
+    var form = document.getElementById(formId);
+    if(!form) return;
+    var fired = false;
+    form.addEventListener('focusin', function(){
+      if(fired) return;
+      fired = true;
+      trackEvent('FORM_START', label);
+    });
+  }
+  trackFormStartOnce('leadForm', 'Quotation Request Form');
+  trackFormStartOnce('feedbackForm', 'Feedback Form');
 });
 
 var productsData = [
@@ -2312,6 +2706,7 @@ function submitLeadForm(event){
       document.getElementById('modalMainView').style.display = 'none';
       var successEl = document.getElementById('leadSuccess');
       successEl.classList.add('active');
+      trackEvent('FORM_SUBMIT', 'Quotation Request — ' + productName);
       var msgrBtn = document.getElementById('leadMessengerBtn');
       if(SITE_CONFIG.messengerLink){
         msgrBtn.href = SITE_CONFIG.messengerLink;
@@ -2502,6 +2897,14 @@ function submitLeadForm(event){
     setText('footPhone', data.footPhone);
     setText('footEmail', data.footEmail);
     setText('footLocation', data.footLocation);
+    if(data.footPhone){
+      var footPhoneLink = document.getElementById('footPhone');
+      if(footPhoneLink) footPhoneLink.href = 'tel:' + data.footPhone.replace(/[^0-9+]/g, '');
+    }
+    if(data.footEmail){
+      var footEmailLink = document.getElementById('footEmail');
+      if(footEmailLink) footEmailLink.href = 'mailto:' + data.footEmail;
+    }
 
     if(Array.isArray(data.products) && data.products.length){
       var grid = document.getElementById('productsGrid');
@@ -2526,13 +2929,7 @@ function submitLeadForm(event){
 })();
 </script>
 
-<!-- =====================================================================
-     STYLE 3 (Female) — scroll reveal (fade-up)
-     Self-contained and additive: only ADDS .s3-reveal / .s3-in classes
-     for the CSS transition above. Reads no site data, calls no existing
-     function, touches no existing DOM id. Remove this block and the site
-     still works with everything visible.
-     ===================================================================== */
+
 <script>
 (function(){
   function s3Init(){
@@ -2577,14 +2974,6 @@ function submitLeadForm(event){
 })();
 </script>
 
-
-<!-- =====================================================================
-     STYLE 4 — scroll reveal (fade-up)
-     Fully self-contained and additive: it only ADDS the .s4-reveal /
-     .s4-in classes for the CSS transition above. It reads no site data,
-     calls no existing function, and touches no existing DOM id. Removing
-     this block leaves the site fully functional with everything visible.
-     ===================================================================== */
 <script>
 (function(){
   var s4Layouts = ['5'];
@@ -2632,14 +3021,6 @@ function submitLeadForm(event){
 })();
 </script>
 
-
-<!-- =====================================================================
-     STYLE 2 (Elegant Feminine) — scroll reveal (fade-up)
-     Self-contained and additive: only ADDS .s6-reveal / .s6-in classes
-     for the CSS transition above. Reads no site data, calls no existing
-     function, touches no existing DOM id. Remove this block and the site
-     still works with everything visible.
-     ===================================================================== */
 <script>
 (function(){
   function s6Init(){
@@ -2683,6 +3064,5 @@ function submitLeadForm(event){
   setTimeout(s6Init, 1800);
 })();
 </script>
-
 </body>
 </html>
